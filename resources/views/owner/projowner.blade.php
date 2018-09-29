@@ -32,7 +32,7 @@
                     <h6>Files:</h6>
                     @if ($project->files->isNotEmpty())
                         @foreach ($project->files as $file)
-                        <button value="{{ $file->id }}" type="button" class="btn btn-light">
+                        <button data-toggle="modal" data-target="#deleteFileModal" value="{{ $file->id }}" type="button" class="btn btn-light each-file">
                             <img src="{{ asset("/images/$file->name") }}" alt="{{ $file->name }}" class="img-thumbnail" style="height: 100px; width:100px;">
                         </button>
                         @endforeach
@@ -80,6 +80,26 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" onclick="uploadFile();">Save</button>
                 <button type="button" class="btn btn-danger" onclick="clearFileInput();">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="deleteFileModal" class="modal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Project File</h5>
+                <button type="button" data-dismiss="modal" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="deleteFile();">Delete</button>
+                {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> --}}
             </div>
         </div>
     </div>
@@ -164,7 +184,49 @@
         setTimeout(function() {
             $(".alert").remove();
         }, 5000);
+
+        // SHOW INDIVIDUAL FLICK ON MODAL
+        $('.each-file').click(function() {
+            var file_id = $(this).val();
+
+            $.get('/file/' + file_id,
+                {
+                    // id: flick_id
+                },
+                function(data, status) {
+                    $('.modal-body').html(data);
+                });
+        });
     });
+
+    // PREVIEW IMAGE UPON CREATE OR UPDATE
+    function previewFile(input) {
+        if (input.files && input.files[0]) {
+
+            $('#previewFileModal').modal('show');
+            var reader = new FileReader();
+
+            reader.readAsDataURL(input.files[0]);
+
+            reader.onloadend = function(e) {
+                $('#fileUploadPreview').attr('src', e.target.result);
+            }
+        }
+    }
+
+    function clearFileInput() {
+        $('#previewFileModal').modal('hide');
+        $('#addFileForm').trigger('reset');
+    }
+
+    function uploadFile() {
+        $('#addFileForm').submit();
+    }
+
+    function deleteFile() {
+        $('#deleteFileForm').submit();
+    }
+
 </script>
 
 @endsection
