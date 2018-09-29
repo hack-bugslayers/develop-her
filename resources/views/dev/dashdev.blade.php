@@ -116,7 +116,7 @@
                         <td>{{$status->name}}</td>
                       @endif
                     @endforeach
-                    <td><a href="/feedback">Add</a></td>
+                    <td><a href="/feedback/{{$myproject->id}}">Add</a></td>
                   </tr>
                 @endforeach
                 <!-- <tr>
