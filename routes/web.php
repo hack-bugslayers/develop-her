@@ -14,6 +14,7 @@
 // ACCESSIBLE TO THE PUBLIC
 // Landing Page - Chellie
 Route::get('/', 'PublicPagesController@index');
+
 // Terms & Conditions - Mars
 Route::get('/termsandconditions', 'PublicPagesController@termsandconditions');
 // About - Mars

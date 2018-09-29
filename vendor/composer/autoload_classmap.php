@@ -22,6 +22,7 @@ return array(
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
     'App\\Http\\Controllers\\MessageController' => $baseDir . '/app/Http/Controllers/MessageController.php',
     'App\\Http\\Controllers\\ProjectController' => $baseDir . '/app/Http/Controllers/ProjectController.php',
+    'App\\Http\\Controllers\\PublicPagesController' => $baseDir . '/app/Http/Controllers/PublicPagesController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
