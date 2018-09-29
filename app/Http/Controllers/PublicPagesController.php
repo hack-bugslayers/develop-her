@@ -26,15 +26,15 @@ class PublicPagesController extends Controller
         return view('about');
     }
 
-    public function projView($id)
-    {
-        $project = Project::with('type', 'status', 'files', 'devs')->findOrFail($id);
+    // public function projView($id)
+    // {
+    //     $project = Project::with('type', 'status', 'files', 'devs')->findOrFail($id);
 
-        return view('project-page', compact('project'));
-    }
+    //     return view('project-page', compact('project'));
+    // }
 
-    public function redirectToLogin()
-    {
-        return redirect()->to('/login')->with('warning', 'Please log in or register first to join. Happy project-hunting!');
-    }
+    // public function redirectToLogin()
+    // {
+    //     return redirect()->to('/login')->with('warning', 'Please log in or register first to join. Happy project-hunting!');
+    // }
 }

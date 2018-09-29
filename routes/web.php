@@ -14,23 +14,17 @@
 // ACCESSIBLE TO THE PUBLIC
 // Landing Page - Chellie
 Route::get('/', 'PublicPagesController@index');
-
 // Terms & Conditions - Mars
 Route::get('/termsandconditions', 'PublicPagesController@termsandconditions');
 // About - Mars
 Route::get('/about', 'PublicPagesController@about');
-// Project Redirect to Login for Outsider
-Route::get('/project/redirect-to-login', 'PublicPagesController@redirectToLogin');
-Route::get('/project/view/{id}', 'PublicPagesController@projView');
-
 
 // AUTH ROUTES
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
 Route::get('/profile', 'HomeController@profile')->name('profile');
 // Activate User from Email - Ann
 Route::get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name('activate.user');
-
 
 // ACCESS BASED ON ROLES
 Route::group(['middleware' => 'role:developer'], function() {
