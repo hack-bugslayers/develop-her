@@ -12,6 +12,7 @@ use App\Skill;
 use App\Type;
 use App\File;
 use App\Status;
+use App\Rating;
 
 class HomeController extends Controller
 {
@@ -53,11 +54,15 @@ class HomeController extends Controller
                 $success_rate = round((($winner/($winner+$runnerup))*100),2);
             }
 
-            // Projects and Types
-            $projects = Project::where('status_id', 1)->get()->sortByDesc('updated_at');
+            $status_id = Status::where('name', 'Ongoing')->pluck('id')->first();
+            $projects = Project::where('status_id', $status_id)->get()->sortByDesc('updated_at');
+
             $types = Type::all();
 
-            return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user'));
+            $myprojects = User::find($user_id)->projectsDev()->get();
+            $statuses = Status::all();
+
+            return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses'));
         } else if ($user->role_id == 2) {
             // Dashboard - Project Count
             $user_id = Auth::user()->id;
@@ -120,15 +125,18 @@ class HomeController extends Controller
     }
 
     // feedbackpage
-    public function feedbackdev()
+    public function feedback()
     {
-        return view('dev.feedbackdev');
-    }
+        $user = Auth::user();
 
-    public function feedbackowner()
-    {
-        return view('feedbackowner');
-    }
+        if ($user->role_id == 1) {
 
+            $ratings = Rating::all();
+
+            return view('dev.feedbackdev', compact('ratings'));
+        } else if ($user->role_id == 2) {
+            return view('owner.feedbackowner');
+        }
+    }
 }
 

@@ -27,8 +27,9 @@ Route::get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name(
 
 // DASHBOARD
 Route::get('/home', 'HomeController@index');
-Route::get('/feedbackdev', 'HomeController@feedbackdev');
-Route::get('/feedbackowner', 'HomeController@feedbackowner');
+Route::get('/feedback', 'HomeController@feedback');
+// Route::get('/feedbackowner', 'HomeController@feedbackowner');
+// Route::post('/give-feedback');
 
 // PROFILE
 Route::get('/profile', 'HomeController@profile')->name('profile');

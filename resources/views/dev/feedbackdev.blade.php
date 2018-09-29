@@ -14,94 +14,28 @@
         <div class="row">
             <div class="col-sm-3">
                 <div class="rating-block">
-                    <h4>Average user rating</h4>
-                    <h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
-                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                    @foreach($ratings as $rating)
+                    <h4>{{$rating->name}}</h4>
+                    <button type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 1)">
                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                     </button>
-                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                    <button type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 2)">
                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                     </button>
-                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+                    <button id="{{$rating->name}}-3" type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 3)">
                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                     </button>
-                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 4)">
                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                     </button>
-                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 5)">
                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                     </button>
+                    <input name="{{$rating->id}}" id="{{$rating->id}}" type="text" val="">
+                    @endforeach
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <h4>Rating breakdown</h4>
-                <div class="pull-left">
-                    <div class="pull-left" style="width:35px; line-height:1;">
-                        <div style="height:9px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
-                    </div>
-                    <div class="pull-left" style="width:180px;">
-                        <div class="progress" style="height:9px; margin:8px 0;">
-                          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="pull-right" style="margin-left:10px;">1</div>
-                </div>
-                <div class="pull-left">
-                    <div class="pull-left" style="width:35px; line-height:1;">
-                        <div style="height:9px; margin:5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
-                    </div>
-                    <div class="pull-left" style="width:180px;">
-                        <div class="progress" style="height:9px; margin:8px 0;">
-                          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="pull-right" style="margin-left:10px;">1</div>
-                </div>
-                <div class="pull-left">
-                    <div class="pull-left" style="width:35px; line-height:1;">
-                        <div style="height:9px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
-                    </div>
-                    <div class="pull-left" style="width:180px;">
-                        <div class="progress" style="height:9px; margin:8px 0;">
-                          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="pull-right" style="margin-left:10px;">0</div>
-                </div>
-                <div class="pull-left">
-                    <div class="pull-left" style="width:35px; line-height:1;">
-                        <div style="height:9px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
-                    </div>
-                    <div class="pull-left" style="width:180px;">
-                        <div class="progress" style="height:9px; margin:8px 0;">
-                          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="pull-right" style="margin-left:10px;">0</div>
-                </div>
-                <div class="pull-left">
-                    <div class="pull-left" style="width:35px; line-height:1;">
-                        <div style="height:9px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
-                    </div>
-                    <div class="pull-left" style="width:180px;">
-                        <div class="progress" style="height:9px; margin:8px 0;">
-                          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="pull-right" style="margin-left:10px;">0</div>
-                </div>
-            </div>          
-        </div>          
+            </div>                    
+        </div>      
     </div> <!-- /container -->
 <br>
 
@@ -147,5 +81,56 @@
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
+
+<!-- import jquery -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- import bootstrap js -->
+<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    // $(document).ready(function () {
+    //     $("#run").click(function() {
+    //         var html = $('#html').val();
+    //         var css = $('#css').val();
+    //         var js = $('#js').val();
+    //         var tag = $('.tag').val();
+    //         var code = '<style>' + css + '</style>' + html + '<script>' + js + tag;
+    //         $("#browser").html(code);
+    //     });
+    // });
+
+    function setRating(id, val) {
+        // var value = val;
+        var id = id;
+        console.log(val);
+        console.log(id);
+
+        $("#"+id).val(val);
+
+        // var quantity = $('#itemQuantity' + id).val();
+        // var price = $('#itemPrice' + id).val();
+        // if (quantity == 0) {
+        //     $('.add-error').show().delay(2000).fadeOut(1500);
+        // } else {
+        //     $.post('assets/add_to_cart.php',
+        //         {
+        //             item_id: id,
+        //             item_quantity: quantity,
+        //             item_price: price
+        //         },
+        //             function(data, status) {
+        //                 $('.cart-nav-icon').html('<img src="assets/img/icons/icons8-shopping-bag-50.png">' + data);
+        //                 $('.cart-nav-text').html('CART' + data);
+        //                 $('.added').show().delay(500).fadeOut(1500);
+        //         });
+        // }
+    }
+
+    // $("button").click(function() {
+    //     var val = $(this).next().val();
+    //     $("")
+    // });
+</script>
 
 @endsection

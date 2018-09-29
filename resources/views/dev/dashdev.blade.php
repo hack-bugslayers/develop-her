@@ -46,7 +46,7 @@
         <a href="profile" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> VIEW MY PROFILE {{$user->username}}</a>
 
         <!-- practice coding link -->
-        <a href="/resourcesdev" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> PRACTICE CODING </a>
+        <a href="/code-editor" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> PRACTICE CODING </a>
         </div>
 
         <div class="well">
@@ -63,7 +63,7 @@
       </div>
 
     <div class="col-md-9">
-        <!-- my projects -->
+        <!-- stats -->
         <div class="panel panel-default">
             <div class="panel-heading" style="background-color:  #48C9B0;">
             <h3 class="panel-title">My Projects</h3></div>
@@ -83,19 +83,60 @@
             </div>
        </div>
 
-   <div class="col-md-3">
-     <div class="well dash-box">
-       <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>{{$winner}}</h2>
-       <h4>Winner</h4>
-     </div>
-   </div>
+       <div class="col-md-3">
+         <div class="well dash-box">
+           <h2><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>{{$winner}}</h2>
+           <h4>Winner</h4>
+         </div>
+       </div>
 
-   <div class="col-md-3">
-     <div class="well dash-box">
-       <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>{{$runnerup}}</h2>
-       <h4>Runner-up</h4>
-     </div>
-   </div>
+       <div class="col-md-3">
+         <div class="well dash-box">
+           <h2><span class="glyphicon glyphicon-stats" aria-hidden="true"></span>{{$runnerup}}</h2>
+           <h4>Runner-up</h4>
+         </div>
+       </div>
+
+       <!-- projects -->
+        <div class="col-md-12">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">PROJECT</th>
+                  <th scope="col">STATUS</th>
+                  <th scope="col">FEEDBACK</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($myprojects as $myproject)
+                  <tr>
+                    <th scope="row">{{$myproject->name}}</th>
+                    @foreach($statuses as $status)
+                      @if($myproject->status_id == $status->id)
+                      <td>{{$status->name}}</td>
+                      @endif
+                    @endforeach
+                    <td><a href="/feedback">Add</a></td>
+                  </tr>
+                @endforeach
+                <!-- <tr>
+                  <th scope="row">ALING BEBANG'S SPECIALTY CAKES</th>
+                  <td>Ongoing</td>
+                  <td>Bebang</td>
+                </tr>
+                <tr>
+                  <th scope="row">KAINAN SA KANTO</th>
+                  <td>Winner</td>
+                  <td>Jean</td>
+                </tr>
+                <tr>
+                  <th scope="row">MANG LARRY'S IHAW IHAW</th>
+                  <td>Runner up</td>
+                  <td>Larry</td>
+                </tr> -->
+              </tbody>
+            </table>
+        </div>
   </div>
 </div>
 
@@ -113,7 +154,7 @@
 
       @foreach($projects as $project)
       <tr>
-          <td>{{$project->name}}</td>
+          <td><a href="/project/{{$project->id}}">{{$project->name}}</a></td>
           <td>
             @foreach($types as $type)
               @if($type->id == $project->type_id)
