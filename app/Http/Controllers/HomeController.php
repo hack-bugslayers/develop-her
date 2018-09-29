@@ -13,6 +13,7 @@ use App\Type;
 use App\File;
 use App\Status;
 use App\Rating;
+use App\Update;
 use App\RatingsUser;
 
 class HomeController extends Controller
@@ -99,6 +100,13 @@ class HomeController extends Controller
 
             return view('owner.dashowner', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user'));
         }
+    }
+
+    public function fetchUpdates()
+    {
+        $updates = Update::with('likes', 'comments', 'user')->get();
+
+        return view('newsfeed', compact('updates'));
     }
 
     // Profile
@@ -191,7 +199,7 @@ class HomeController extends Controller
         // $feedback->save();
 
         // exit;
-        
+
         if ($user->role_id == 1) {
             $clients = Project::find($id)->clients()->get();
 
@@ -224,7 +232,7 @@ class HomeController extends Controller
 
         // assign user_id and board_id in pivot table
         // $board->users()->attach(Auth::user()->id);
-        
+
 
         // save this activity
         // $username = Auth::user()->name;
