@@ -47,7 +47,7 @@ return array(
     'App\\Providers\\EventServiceProvider' => $baseDir . '/app/Providers/EventServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Rating' => $baseDir . '/app/Rating.php',
-    'App\\RatingUser' => $baseDir . '/app/RatingUser.php',
+    'App\\RatingsUser' => $baseDir . '/app/RatingsUser.php',
     'App\\Role' => $baseDir . '/app/Role.php',
     'App\\Skill' => $baseDir . '/app/Skill.php',
     'App\\SkillsUser' => $baseDir . '/app/SkillsUser.php',
