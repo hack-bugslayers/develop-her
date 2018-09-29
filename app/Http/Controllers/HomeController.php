@@ -13,6 +13,7 @@ use App\Type;
 use App\File;
 use App\Status;
 use App\Rating;
+use App\RatingsUser;
 
 class HomeController extends Controller
 {
@@ -150,47 +151,39 @@ class HomeController extends Controller
     // feedbackpage
     public function addFeedback(Request $request, $idP, $idC)
     {
-
-        // validation
-        // $rules = array(
-        //     'name' => 'required'
-        // );
-        // $this -> validate($request, $rules);
-
-        // create new row
-        $rating = new RatingUser();
-        $rating->user_id = $idC
-        $rating->save();
-        // set board name
-        // echo "hello";
-        dd($request->all());
-        // exit;
-        // save row
-        // $board->save();
-
-        // assign user_id and board_id in pivot table
-        // $board->users()->attach(Auth::user()->id);
-        
-
-        // save this activity
-        // $username = Auth::user()->name;
-        // $activity = new Activity();
-        // $activity->name = $username . ' created a new board "' . $board->name . '"';
-        // $activity->task_id = null;
-        // $activity->board_id = $board->id;
-        // $activity->save();
-
-        // success message
-        // Session::flash('create_success', "$board->name created successfully");
-
-        // return to previous page
-        // return redirect()->back();
-
         $user = Auth::user();
-        $project = Project::find($id);
+        // dd($request->all());
 
-        // dd($project);
+        // Save value for accuracy
+        $rating_user = new RatingsUser();
+        $rating_user->rated_by = $user->id;
+        $rating_user->rated_to = $idC;
+        $rating_id = Rating::where('name', 'accuracy')->pluck('id')->first();
+        $rating_user->rating_id = $rating_id;
+        $rating_user->value = $request->accuracy;
+        $rating_user->save();
 
+        // Save value for communication
+        $rating_user = new RatingsUser();
+        $rating_user->rated_by = $user->id;
+        $rating_user->rated_to = $idC;
+        $rating_id = Rating::where('name', 'communication')->pluck('id')->first();
+        $rating_user->rating_id = $rating_id;
+        $rating_user->value = $request->communication;
+        $rating_user->save();
+
+        // Save value for overall_experience
+        $rating_user = new RatingsUser();
+        $rating_user->rated_by = $user->id;
+        $rating_user->rated_to = $idC;
+        $rating_id = Rating::where('name', 'overall experience')->pluck('id')->first();
+        $rating_user->rating_id = $rating_id;
+        // exit;
+        $rating_user->value = $request->overall_experience;
+        $rating_user->save();
+
+        exit;
+        
         if ($user->role_id == 1) {
             $clients = Project::find($id)->clients()->get();
 
