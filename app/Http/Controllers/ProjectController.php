@@ -25,16 +25,26 @@ class ProjectController extends Controller
     }
 
     // Account(Dev)
-    public function accountDev()
+    public function accountView()
     {
         $user = Auth::user();
-        $skills = Skill::all();
 
-        $user_skills = $user->load('skills');
-        $user_skills = $user_skills->skills()->pluck('name')->all();
-        // dd(count($user_skills));
-        return view('dev.accountdev', compact('user', 'skills', 'user_skills'));
+        $dev = Role::where('name', 'developer')->pluck('id')->first();
+        $owner = Role::where('name', 'owner')->pluck('id')->first();
+
+        if ($user->role->id == $dev) {
+
+            $skills = Skill::all();
+            $user_skills = $user->load('skills');
+            $user_skills = $user_skills->skills()->pluck('name')->all();
+            // dd(count($user_skills));
+            return view('dev.accountdev', compact('user', 'skills', 'user_skills'));
+        } else if ($user->role->id == $owner) {
+            return view('owner.accountowner', compact('user'));
+        }
     }
+
+
 
     public function updateDevAccount(Request $request)
     {
@@ -66,14 +76,6 @@ class ProjectController extends Controller
             auth()->logout();
             return redirect()->to('/login')->with('warning', 'Your logged in session has expired. Kindly login again.');
         }
-    }
-
-    // Account (Owner)
-    public function accountOwner()
-    {
-        $user = Auth::user();
-
-        return view('owner.accountowner', compact('user'));
     }
 
     public function updateOwnerAccount(Request $request)
@@ -123,9 +125,18 @@ class ProjectController extends Controller
     // Create Project
     public function createProjectOwner()
     {
-        $types = Type::all();
+        $user = Auth::user();
 
-        return view('owner.createprojectowner', compact('types'));
+        $dev = Role::where('name', 'developer')->pluck('id')->first();
+        $owner = Role::where('name', 'owner')->pluck('id')->first();
+
+        if ($user->role->id == $owner) {
+            $types = Type::all();
+            return view('owner.createprojectowner', compact('types'));
+        } else if ($user->role->id == $dev) {
+            return redirect('/home')->with('status', 'Sorry, the page you previously tried to access is restricted.');
+        }
+
     }
 
     public function storeNewProject(Request $request)

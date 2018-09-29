@@ -28,7 +28,10 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->role_id == 1) {
+        $dev = Role::where('name', 'developer')->pluck('id')->first();
+        $owner = Role::where('name', 'owner')->pluck('id')->first();
+
+        if ($user->role->id == $dev) {
             // Dashboard - Project Count
             $user_id = Auth::user()->id;
 
@@ -68,7 +71,7 @@ class HomeController extends Controller
             $feedbacks = Feedback::all();
 
             return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks'));
-        } else if ($user->role_id == 2) {
+        } else if ($user->role->id == $owner) {
             // Dashboard - Project Count
             $user_id = Auth::user()->id;
 
@@ -117,9 +120,12 @@ class HomeController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->role_id == 1) {
+        $dev = Role::where('name', 'developer')->pluck('id')->first();
+        $owner = Role::where('name', 'owner')->pluck('id')->first();
+
+        if ($user->role->id == $dev) {
             return view('dev.profiledev', compact('user'));
-        } else if ($user->role_id == 2) {
+        } else if ($user->role->id == $owner) {
             return view('owner.profileowner', compact('user'));
         }
     }
@@ -142,9 +148,12 @@ class HomeController extends Controller
         $user = Auth::user();
         $project = Project::find($id);
 
+        $dev = Role::where('name', 'developer')->pluck('id')->first();
+        $owner = Role::where('name', 'owner')->pluck('id')->first();
+
         // dd($project);
 
-        if ($user->role_id == 1) {
+        if ($user->role->id == $dev) {
             $clients = Project::find($id)->clients()->get();
             foreach ($clients as $client) {
                 $client = $client;
@@ -154,7 +163,7 @@ class HomeController extends Controller
             $ratings = Rating::all();
 
             return view('dev.feedbackdev', compact('ratings', 'project', 'client'));
-        } else if ($user->role_id == 2) {
+        } else if ($user->role->id == $dev) {
             return view('owner.feedbackowner');
         }
     }
@@ -163,6 +172,9 @@ class HomeController extends Controller
     public function addFeedback(Request $request, $idP, $idC)
     {
         $user = Auth::user();
+
+        $dev = Role::where('name', 'developer')->pluck('id')->first();
+        $owner = Role::where('name', 'owner')->pluck('id')->first();
         // dd($request->all());
 
         // Save value for accuracy
@@ -207,14 +219,14 @@ class HomeController extends Controller
         exit;
         // exit;
 
-        if ($user->role_id == 1) {
+        if ($user->role->id == $dev) {
             $clients = Project::find($id)->clients()->get();
 
             // dd($clients);
             $ratings = Rating::all();
 
             return view('dev.feedbackdev', compact('ratings', 'project', 'clients'));
-        } else if ($user->role_id == 2) {
+        } else if ($user->role->id == $owner) {
             return view('owner.feedbackowner');
         }
     }
