@@ -357,6 +357,7 @@ class ComposerStaticInit67d630c71fc1a03aaae0ec311add185f
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\LikesUpdate' => __DIR__ . '/../..' . '/app/LikesUpdate.php',
         'App\\Message' => __DIR__ . '/../..' . '/app/Message.php',
+        'App\\Notifications\\VerifyEmail' => __DIR__ . '/../..' . '/app/Notifications/VerifyEmail.php',
         'App\\Project' => __DIR__ . '/../..' . '/app/Project.php',
         'App\\ProjectsSkill' => __DIR__ . '/../..' . '/app/ProjectsSkill.php',
         'App\\ProjectsUser' => __DIR__ . '/../..' . '/app/ProjectsUser.php',
