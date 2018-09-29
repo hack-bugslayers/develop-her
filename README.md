@@ -1,0 +1,3 @@
+## About Rigma
+
+## License
