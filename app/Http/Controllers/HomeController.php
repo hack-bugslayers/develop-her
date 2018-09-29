@@ -178,11 +178,19 @@ class HomeController extends Controller
         $rating_user->rated_to = $idC;
         $rating_id = Rating::where('name', 'overall experience')->pluck('id')->first();
         $rating_user->rating_id = $rating_id;
-        // exit;
         $rating_user->value = $request->overall_experience;
         $rating_user->save();
 
-        exit;
+        // Save feedback
+        // $feedback = new Feedback();
+        // $feedback->dev_id = $user->id;
+        // $feedback->client_id = $idC;
+        // $rating_id = Rating::where('name', 'overall experience')->pluck('id')->first();
+        // $feedback->rating_id = $rating_id;
+        // $feedback->value = $request->overall_experience;
+        // $feedback->save();
+
+        // exit;
         
         if ($user->role_id == 1) {
             $clients = Project::find($id)->clients()->get();
@@ -233,4 +241,3 @@ class HomeController extends Controller
         // return redirect()->back();
     }
 }
-
