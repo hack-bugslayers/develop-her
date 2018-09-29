@@ -112,6 +112,17 @@ class HomeController extends Controller
         }
     }
 
+    public function viewProfile($id)
+    {
+        $user = User::find($id);
+
+        if ($user->role_id == 1) {
+            return view('dev.profiledev', compact('user'));
+        } else if ($user->role_id == 2) {
+            return view('owner.profileowner', compact('user'));
+        }
+    }
+
     // Resources - Links
     public function resources()
     {
@@ -159,7 +170,7 @@ class HomeController extends Controller
 
         // create new row
         $rating = new RatingUser();
-        $rating->user_id = $idC
+        $rating->user_id = $id;
         $rating->save();
         // set board name
         // echo "hello";
@@ -170,7 +181,7 @@ class HomeController extends Controller
 
         // assign user_id and board_id in pivot table
         // $board->users()->attach(Auth::user()->id);
-        
+
 
         // save this activity
         // $username = Auth::user()->name;
@@ -223,7 +234,7 @@ class HomeController extends Controller
 
         // assign user_id and board_id in pivot table
         // $board->users()->attach(Auth::user()->id);
-        
+
 
         // save this activity
         // $username = Auth::user()->name;

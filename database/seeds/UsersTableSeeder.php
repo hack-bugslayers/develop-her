@@ -37,8 +37,8 @@ class UsersTableSeeder extends Seeder
         // SEEDER FOR COMMUNITY MEMBERS
         for ($i = 0; $i < 24; $i++) {
             DB::table('users')->insert([
-                'first_name' => $faker->name,
-                'last_name' => $faker->name,
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
                 'email' => $faker->unique()->safeEmail,
                 'status' => true,
                 'username' => $faker->unique()->userName,
@@ -54,8 +54,8 @@ class UsersTableSeeder extends Seeder
         // SEEDER FOR CLIENTS OR BUSINESS OWNERS
         for ($i = 0; $i < 10; $i++) {
             DB::table('users')->insert([
-                'first_name' => $faker->name,
-                'last_name' => $faker->name,
+                'first_name' => $faker->firstName,
+                'last_name' => $faker->lastName,
                 'email' => $faker->unique()->safeEmail,
                 'status' => true,
                 'username' => $faker->unique()->userName,
