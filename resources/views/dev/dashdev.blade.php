@@ -118,14 +118,14 @@
                     @endforeach
                     <td>
 
-                      @foreach($feedbacks as $feedback)
+                          <a href="/feedback/{{$myproject->id}}">Add</a>
+                      {{-- @foreach($feedbacks as $feedback)
                         @if ($feedback->rated_by == $user->id)
                           @if ($feedback->project_id == $myproject->id)
                             <p>Submitted</p>
                           @endif
                         @else
-                          <a href="/feedback/{{$myproject->id}}">Add</a>
-                        @endif
+                        @endif --}}
                         {{-- @if ($feedback->project_id == $myproject->id)
                           @if ($feedback->rated_by == $user->id)
                             <p>Submitted</p>
@@ -133,7 +133,7 @@
                             <a href="/feedback/{{$myproject->id}}">Add</a>
                           @endif
                         @endif --}}
-                      @endforeach
+                      {{-- @endforeach --}}
                     </td>
                   </tr>
                 @endforeach
