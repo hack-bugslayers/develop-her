@@ -1,13 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.nav')
 
 @section('content')
-<div class="container">
+<div class="container py-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
             	<!-- css: text-transform -->
                 <div class="card-body">
-                   
+
                   	<table class="table">
 					  <thead class="thead-dark text centered">
 					    <tr>
@@ -16,51 +16,25 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					    <tr>
-					      <th scope="row">
-					      	<a href="url"><h4>Mars Trizha</h4></a>
-					      	<p>Rating: 90%</p>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>PHP</small></button>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>JS</small></button>	
-					      </th>			     
-					    </tr>
-					    <tr>
-					       <th scope="row">
-					      	<a href="url"><h4>Des Pineda</h4></a>
-					      	<p>Rating: 94%</p>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>PHP</small></button>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>JS</small></button>	
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>SQL</small></button>	
-					      </th>	
-					    </tr>
-					    <tr>
-					   	 <th>
-					      <a href="url"><h4>Chellie Ilustre</h4></a>
-					      	<p>Rating: 90%</p>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>PHP</small></button>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>JS</small></button>
-					      </th>	
-					    </tr>
-					    <tr>
-					     <th>
-					      <a href="url"><h4>Ruby Anne</h4></a>
-					      	<p>Rating: 90%</p>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>PHP</small></button>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>JS</small></button>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>React</small></button>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>Ruby</small></button>
-					      </th>	
-					    </tr>
-					     <tr>
-					      <th>
-					      <a href="url"><h4>Betina Bondoc</h4></a>
-					      	<p>Rating: 92%</p>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>PHP</small></button>
-					      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>Ruby</small></button>
-					      </th>	
-					    </tr>
+					  	@if ($developers->isNotEmpty())
+					  		@foreach($developers as $developer)
+						    <tr>
+						      <th scope="row">
+						      	<a href={{ url("/profiledev/$developer->id") }}><h4>{{ $developer->first_name . ' ' . $developer->last_name }}</h4></a>
+						      	@foreach ($developer->ratings as $rating)
+									<p>{{ $rating->name . ': ' . $rating->pivot->value }}</p>
+						      	@endforeach
+								@foreach($developer->skills as $skill)
+						      	<button class="btn btn-success" style="display: inline-block; padding: 1px;"><small>{{ $skill->name }}</small></button>
+						      	@endforeach
+						      </th>
+						    </tr>
+					    	@endforeach
+					    @endif
 					  </tbody>
 					</table>
+
+                    {{ $developers->links() }}
 
                 </div>
             </div>

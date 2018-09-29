@@ -34,6 +34,7 @@ Route::post('/feedback/create/{idP}/{idC}', 'HomeController@addFeedback');
 
 // PROFILE
 Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::get('/view-profile/{id}', 'HomeController@viewProfile');
 
 // FEED
 Route::get('/feed', 'ProjectController@feed');
