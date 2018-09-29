@@ -52,7 +52,7 @@
                                     <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 5)">
                                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                     </button>
-                                    <input name="{{$rating->id}}" id="{{$rating->id}}" type="text" val="" hidden>
+                                    <input name="{{$rating->name}}" id="{{$rating->id}}" type="text" val="" hidden>
                                     @endforeach
                                 </div>
                                 <div class="form-group">
