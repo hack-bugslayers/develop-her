@@ -232,7 +232,7 @@
 </div><!-- container -->
 </div>
 	
-<div class="fifth-section carousel-wrapper full-height">
+<!-- <div class="fifth-section carousel-wrapper full-height">
 	<div class="carousel-section">
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
@@ -273,7 +273,7 @@
 			</a>
 		</div>
 	</div>
-</div>
+</div> -->
 
 
 

@@ -66,3 +66,6 @@ Route::post('/projowner/edit', 'ProjectController@editProject');
 Route::get('/code-editor', 'HomeController@code');
 // Links - Mars
 Route::get('/resources', 'HomeController@resources');
+
+Route::get('/projectdone', 'ProjectDoneController@projectdone');
+
