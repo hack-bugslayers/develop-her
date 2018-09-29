@@ -101,25 +101,23 @@ class ProjectController extends Controller
         }
     }
 
-    // Project Feed (Dev)
-    public function feedDev()
+    public function feed()
     {
-        $projects = Project::with('type')->get();
-        // dd($projects);
-        return view('dev.feeddev', compact('projects'));
-    }
+        $user = Auth::user();
 
-    // Project Feed (Owner)
-    public function feedOwner()
-    {
-        $role = Role::select('id')->where('name', 'developer')->firstOrFail();
-        if ($role !== null) {
-            $developers = User::with('skills', 'ratings')
-                                ->where('role_id', $role->id)
-                                ->simplePaginate(10);
+        if ($user->role_id == 1) {
+            $projects = Project::with('type')->get();
+            return view('dev.feeddev', compact('projects'));
+        } else if ($user->role_id == 2) {
+            $role = Role::select('id')->where('name', 'developer')->firstOrFail();
+            if ($role !== null) {
+                $developers = User::with('skills', 'ratings')
+                                    ->where('role_id', $role->id)
+                                    ->simplePaginate(10);
+            }
+            // dd($developers);
+            return view('owner.feedowner', compact('developers'));
         }
-        // dd($developers);
-        return view('owner.feedowner', compact('developers'));
     }
 
     // Create Project
@@ -180,22 +178,21 @@ class ProjectController extends Controller
 
     }
 
-    // Project View (Dev)
-    public function projDev($id)
+    public function project($id)
     {
-        $project = Project::with('type', 'status', 'files', 'devs')->findOrFail($id);
-        // dd($project->devs->whereIn('id', Auth::user()->id)->isEmpty());
-        return view('dev.projdev', compact('project'));
-    }
+        $user = Auth::user();
 
-    // Project View (Dev)
-    public function projOwner($id)
-    {
-        $types = Type::all();
+        if ($user->role_id == 1) {
+            $project = Project::with('type', 'status', 'files', 'devs')->findOrFail($id);
+            // dd($project->devs->whereIn('id', Auth::user()->id)->isEmpty());
+            return view('dev.projdev', compact('project'));
+        } else if ($user->role_id == 2) {
+            $types = Type::all();
 
-        $project = Project::with('type', 'status', 'files')->findOrFail($id);
-        // dd($project);
-        return view('owner.projowner', compact('project', 'types'));
+            $project = Project::with('type', 'status', 'files')->findOrFail($id);
+            // dd($project);
+            return view('owner.projowner', compact('project', 'types'));
+        }
     }
 
     public function uploadFiles(Request $request)
@@ -281,12 +278,6 @@ class ProjectController extends Controller
             $project->devs()->detach($developer->id);
             echo 'Join';
         }
-    }
-
-    // My Projects
-    public function myprojects()
-    {
-        return view('dev.myprojects');
     }
 
     // Entry Page - Collab Page

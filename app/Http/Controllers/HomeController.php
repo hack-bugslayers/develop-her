@@ -34,13 +34,13 @@ class HomeController extends Controller
 
             $ongoing = count($ongoings);
 
-            $runnerups = ProjectsUsers::where('dev_id', $user_id)
+            $runnerups = ProjectsUser::where('dev_id', $user_id)
                 ->where('status_id', 2)
                 ->get();
 
             $runnerup = count($runnerups);
 
-            $winners = ProjectsUsers::where('dev_id', $user_id)
+            $winners = ProjectsUser::where('dev_id', $user_id)
                 ->where('status_id', 3)
                 ->get();
 
@@ -95,7 +95,7 @@ class HomeController extends Controller
         }
     }
 
-    // Profile (Dev)
+    // Profile
     public function profile()
     {
         $user = Auth::user();
@@ -114,9 +114,9 @@ class HomeController extends Controller
     }
 
     // Codepen
-    public function resourcesdev()
+    public function code()
     {
-        return view('dev.resourcesdev');
+        return view('dev.codeeditor');
     }
 
     // feedbackpage
