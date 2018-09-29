@@ -64,7 +64,9 @@ class HomeController extends Controller
             $myprojects = User::find($user_id)->projectsDev()->get();
             $statuses = Status::all();
 
-            return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses'));
+            $feedbacks = Feedback::all();
+
+            return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks'));
         } else if ($user->role_id == 2) {
             // Dashboard - Project Count
             $user_id = Auth::user()->id;
