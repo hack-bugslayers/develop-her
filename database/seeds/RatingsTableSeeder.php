@@ -15,7 +15,7 @@ class RatingsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        $ratings = ['accuracy', 'communication', 'overall experience'];
+        $ratings = ['accuracy', 'communication', 'experience'];
 
         foreach ($ratings as $rating) {
             DB::table('ratings')->insert([

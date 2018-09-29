@@ -18,6 +18,7 @@ Route::get('/', 'PublicPagesController@index');
 Route::get('/termsandconditions', 'PublicPagesController@termsandconditions');
 // About - Mars
 Route::get('/about', 'PublicPagesController@about');
+Route::get('/newsfeed', 'HomeController@fetchUpdates');
 
 // AUTH ROUTES
 Auth::routes();
@@ -41,10 +42,9 @@ Route::get('/feed', 'ProjectController@feed');
 
 // ACCOUNT
 // Account (Dev) - Chellie/Ann
-Route::get('/accountdev', 'ProjectController@accountDev');
+Route::get('/account', 'ProjectController@accountView');
 Route::post('/accountdev/update', 'ProjectController@updateDevAccount');
 // Account (Owner) - Chellie/Ann
-Route::get('/accountowner', 'ProjectController@accountOwner');
 Route::post('/accountowner/update', 'ProjectController@updateOwnerAccount');
 // Payment - Mars
 Route::get('/payment', 'ProjectController@payment');

@@ -63,6 +63,16 @@
       </div>
 
     <div class="col-md-9">
+        @if (session('status'))
+          <div class="alert alert-success">
+              {{ session('status') }}
+          </div>
+        @endif
+        @if (session('warning'))
+            <div class="alert alert-warning">
+                {{ session('warning') }}
+            </div>
+        @endif
         <!-- stats -->
         <div class="panel panel-default">
             <div class="panel-heading" style="background-color:  #48C9B0;">
@@ -183,24 +193,21 @@
       </tr>
       @endforeach
     </table>
-
   </div>
 </div>
 
-      </div>
-    </div>
-  </div>
-</section>
+@endsection
 
+@section('individual_javascript')
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
-    <script src="dist/js/bootstrap.min.js"></script>
-  </body>
-</html>
-
+  <script>
+    $(window).on("load", function() {
+        setTimeout(function() {
+            $(".alert").remove();
+        }, 5000);
+    });
+  </script>
 
 @endsection
+
+
