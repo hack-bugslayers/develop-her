@@ -24,6 +24,7 @@
     <link href="{{ asset('css/landingpage.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/entrypage.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/newsfeed.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
