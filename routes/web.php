@@ -18,6 +18,7 @@ Route::get('/', 'PublicPagesController@index');
 Route::get('/termsandconditions', 'PublicPagesController@termsandconditions');
 // About - Mars
 Route::get('/about', 'PublicPagesController@about');
+Route::get('/newsfeed', 'HomeController@fetchUpdates');
 
 // AUTH ROUTES
 Auth::routes();

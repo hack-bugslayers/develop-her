@@ -146,9 +146,13 @@
         </footer>
     </div>
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://use.fontawesome.com/45e03a14ce.js"></script>
+
+    <!-- Import jQuery -->
+    <script type="text/javascript" src="{{ asset('lib/jquery-3.3.1.min.js') }}"></script>
+
+    @yield('individual_javascript')
 </body>
 </html>
