@@ -1,0 +1,98 @@
+*,
+*::before,
+*::after  {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.coding-practice {
+	display: block;
+	min-height: 100vh;
+	/*background-color: red;*/
+}
+
+.editors {
+	width: 30%;
+	float: left;
+	margin: 1%;
+}
+
+#html,
+#css,
+#js {
+	width: 100%;
+	height: 27vh;
+	margin-bottom: 1%;
+	background: black;
+	color: white;
+	padding: 10px;
+	text-align: top;
+}
+
+.browser {
+	/*background: black;*/
+	width: 67%;
+	height: 100%;
+	margin: 1% 1% 1% 0;
+	float: left;
+}
+
+#run {
+	background-color: black;
+	color: white;
+	padding: 10px 20px;
+	display: inline-block;
+	cursor: pointer;
+	margin-top: 1%;
+}
+
+/*
+ *
+ * Media Query XS - Phones
+ *
+ */
+
+@media only screen and (max-width: 767px) {
+
+}
+
+/*
+ *
+ * Media Query SM - Tablets
+ *
+ */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/*
+ *
+ * Media Query MD - Desktops
+ *
+ */
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/*
+ *
+ * Media Query LG - Large Desktops
+ *
+ */
+
+@media only screen and (min-width: 1200px){
+
+}
+
+.clear:after {
+	content: "";
+	display: block;
+	clear: both;
+}
