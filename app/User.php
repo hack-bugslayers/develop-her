@@ -32,7 +32,7 @@ class User extends Authenticatable
     }
 
     public function skills() {
-        return $this->belongsToMany('App\Skill', 'users_skills', 'user_id', 'skill_id')->withTimestamps();
+        return $this->belongsToMany('App\Skill', 'skills_users', 'user_id', 'skill_id')->withTimestamps();
     }
 
     public function projectsDev() {
