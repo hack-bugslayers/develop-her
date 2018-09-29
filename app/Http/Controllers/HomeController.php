@@ -12,6 +12,7 @@ use App\Skill;
 use App\Type;
 use App\File;
 use App\Status;
+use App\Rating;
 
 class HomeController extends Controller
 {
@@ -129,7 +130,10 @@ class HomeController extends Controller
         $user = Auth::user();
 
         if ($user->role_id == 1) {
-            return view('dev.feedbackdev');
+
+            $ratings = Rating::all();
+
+            return view('dev.feedbackdev', compact('ratings'));
         } else if ($user->role_id == 2) {
             return view('owner.feedbackowner');
         }
