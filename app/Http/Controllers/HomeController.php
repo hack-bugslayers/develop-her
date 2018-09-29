@@ -96,7 +96,7 @@ class HomeController extends Controller
             $projects = Project::where('status_id', 1)->get()->sortByDesc('updated_at');
             $types = Type::all();
 
-            return view('dashowner', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user'));
+            return view('owner.dashowner', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user'));
         }
     }
 
