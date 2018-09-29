@@ -16,6 +16,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/feedback.css') }}" rel="stylesheet">
@@ -86,6 +87,61 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <footer id="footer-Section">
+        	<div class="footer-top-layout">
+        		<div class="container">
+        			<div class="row">
+        				<div class="OurBlog">
+        					<h4>RIGMA BRAND</h4>
+        					<p>Lorem ipsum keme keme keme 48 years mashumers , cheapangga jongoloids warla na bakit biway kasi boyband na ang na ang jutay majubis paminta krung-krung at.</p>
+        					<div class="post-blog-date">September 2018</div>
+        				</div>
+
+        				<div class="col-lg-4 col-md-4 col-sm-4">
+        					<div class="footer-col-item">
+        							<h4>About us</h4>
+        							<address>
+        								501,507 your company address<br>
+        								400015 Maharashtra, UK
+        							</address>
+        						</div>
+        				</div>
+
+        				<div class="col-lg-4 col-md-4 col-sm-4">
+        					<h4>Reach Us</h4>
+							<div class="item-contact"> 
+								<a href="tel:630-885-9200"><span class="link-id">P</span>:<span>630-885-9200</span></a> <a href="tel:630-839.2006"><span class="link-id">F</span>:<span>630-839.2006</span></a> <a href="mailto:info@rigma.com"><span class="link-id">E</span>:<span>info@rigmatechnology.com</span></a> 
+							</div>
+        				</div>
+
+        				<div class="col-lg-4 col-md-4 col-sm-4">
+        					<h4>Sign up for Newsletter</h4>
+							<form class="signUpNewsletter" action="" method="get">
+								<input name="" class="gt-email form-control" placeholder="You@youremail.com" type="text">
+								<input name="" class="btn-go" value="Go" type="button">
+							</form>
+        				</div>
+
+        				
+        			</div>
+        		</div>
+        	</div>
+        	<div class="footer-bottom-layout">
+        		<div class="socialMedia-footer"> 
+        			<div class="col-md-12">
+	                    <ul class="social-network social-circle">
+	                        <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+	                        <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+	                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+	                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+	                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+	                    </ul>				
+					</div>
+        		</div>
+        		<div class="copyright-tag">Copyright © 201 Bugslayers. All Rights Reserved.</div>
+        	</div>
+        </footer>
     </div>
 </body>
 </html>
