@@ -14,6 +14,7 @@ use App\File;
 use App\Status;
 use App\Rating;
 use App\Update;
+use App\Feedback;
 use App\RatingsUser;
 
 class HomeController extends Controller
@@ -64,7 +65,9 @@ class HomeController extends Controller
             $myprojects = User::find($user_id)->projectsDev()->get();
             $statuses = Status::all();
 
-            return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses'));
+            $feedbacks = Feedback::all();
+
+            return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks'));
         } else if ($user->role_id == 2) {
             // Dashboard - Project Count
             $user_id = Auth::user()->id;
@@ -184,20 +187,24 @@ class HomeController extends Controller
         $rating_user = new RatingsUser();
         $rating_user->rated_by = $user->id;
         $rating_user->rated_to = $idC;
-        $rating_id = Rating::where('name', 'overall experience')->pluck('id')->first();
+        $rating_id = Rating::where('name', 'experience')->pluck('id')->first();
         $rating_user->rating_id = $rating_id;
-        $rating_user->value = $request->overall_experience;
+        $rating_user->value = $request->experience;
         $rating_user->save();
 
-        // Save feedback
-        // $feedback = new Feedback();
-        // $feedback->dev_id = $user->id;
-        // $feedback->client_id = $idC;
-        // $rating_id = Rating::where('name', 'overall experience')->pluck('id')->first();
-        // $feedback->rating_id = $rating_id;
-        // $feedback->value = $request->overall_experience;
-        // $feedback->save();
+        // dd($request->all());
 
+        // Save feedback
+        $feedback = new Feedback();
+        $feedback->rated_by = $user->id;
+        $feedback->rated_to = $idC;
+        $feedback->project_id = $idP;
+        $feedback->name = $request->feedback;
+        $feedback->save();
+
+        return redirect('home');
+
+        exit;
         // exit;
 
         if ($user->role_id == 1) {
@@ -249,3 +256,4 @@ class HomeController extends Controller
         // return redirect()->back();
     }
 }
+

@@ -15,21 +15,21 @@ class CreateFeedbacksTable extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('dev_id')->unsigned()->nullable();
-            $table->integer('client_id')->unsigned()->nullable();
+            $table->integer('rated_to')->unsigned()->nullable();
+            $table->integer('rated_by')->unsigned()->nullable();
             $table->integer('project_id')->unsigned();
-            $table->text('feedback');
+            $table->text('name');
             $table->timestamps();
 
             $table->foreign('project_id')
                     ->references('id')
                     ->on('projects');
 
-            $table->foreign('dev_id')
+            $table->foreign('rated_by')
                     ->references('id')
                     ->on('users');
 
-            $table->foreign('client_id')
+            $table->foreign('rated_to')
                     ->references('id')
                     ->on('users');
         });
