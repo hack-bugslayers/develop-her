@@ -95,3 +95,15 @@
     </div>
 </div>
 @endsection
+
+@section('individual_javascript')
+
+<script>
+    $(window).on("load", function() {
+        setTimeout(function() {
+            $(".alert").remove();
+        }, 5000);
+    });
+</script>
+
+@endsection
