@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            	<!-- css: text-transform -->
+                <!-- css: text-transform -->
                 <div class="card-header"><h2 style="display: inline-block;"><strong>{{ $project->name }}</strong></h2>
                  <button value="{{ $project->id }}" data-toggle="modal" data-target="#editProjectModal" type="button" class="btn btn-success" style="display: inline; float: right; width: 100px;">Edit</button>
                   <h4>{{ $project->type->name }}</h4>

@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            	<!-- css: text-transform -->
+                <!-- css: text-transform -->
                 <div class="card-header"><strong>{{ __('ACCOUNT DETAILS') }}</strong></div>
 
                 @if (session('status'))
