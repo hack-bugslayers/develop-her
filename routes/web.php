@@ -27,12 +27,14 @@ Route::get('/verify-user/{code}', 'Auth\RegisterController@activateUser')->name(
 
 // DASHBOARD
 Route::get('/home', 'HomeController@index');
-Route::get('/feedback', 'HomeController@feedback');
+Route::get('/feedback/{id}', 'HomeController@feedback');
+Route::post('/feedback/create/{idP}/{idC}', 'HomeController@addFeedback');
 // Route::get('/feedbackowner', 'HomeController@feedbackowner');
 // Route::post('/give-feedback');
 
 // PROFILE
 Route::get('/profile', 'HomeController@profile')->name('profile');
+Route::get('/view-profile/{id}', 'HomeController@viewProfile');
 
 // FEED
 Route::get('/feed', 'ProjectController@feed');
@@ -46,7 +48,7 @@ Route::get('/accountowner', 'ProjectController@accountOwner');
 Route::post('/accountowner/update', 'ProjectController@updateOwnerAccount');
 // Payment - Mars
 Route::get('/payment', 'ProjectController@payment');
-    
+
 // PROJECT
 // Project Page (On-going) - Mars/Ann
 Route::get('/project/{id}', 'ProjectController@project');
@@ -55,8 +57,11 @@ Route::post('/project/join', 'ProjectController@joinProject');
 // Create Project - Chellie/Ann
 Route::get('/createprojectowner', 'ProjectController@createProjectOwner');
 Route::post('/createprojectowner/submit', 'ProjectController@storeNewProject');
+Route::get('/file/{id}', 'ProjectController@fetchFile');
+Route::post('/file/delete', 'ProjectController@deleteFile');
+
 // Entry Page - Des/Ann
-Route::get('/entry', 'ProjectController@entrypage');
+Route::get('/entry/{id}', 'ProjectController@entrypage');
 // Upload Files - Ann
 Route::post('/project/upload-files', 'ProjectController@uploadFiles');
 // Edit Project - Ann

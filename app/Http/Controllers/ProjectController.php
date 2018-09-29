@@ -174,7 +174,7 @@ class ProjectController extends Controller
 
         $project->clients()->attach($owner->id);
 
-        return redirect()->back()->with('status', 'Successfully created a new project');
+        return redirect("/project/$project->id")->with('status', 'Successfully created a new project');
 
     }
 
@@ -229,6 +229,27 @@ class ProjectController extends Controller
         }
     }
 
+    public function fetchFile($id)
+    {
+        $file = File::find($id);
+
+        return view('file-modal', compact('file'));
+    }
+
+    public function deleteFile(Request $request)
+    {
+        $file = File::find($request->file_id);
+        $projects = $file->projects()->get();
+
+        foreach ($projects as $project) {
+            $project->files()->detach($file);
+        }
+
+        $file->delete();
+
+        return redirect()->back()->with('status', 'Successfully deleted file');
+    }
+
     // Edit Project
     public function editProject(Request $request)
     {
@@ -281,9 +302,11 @@ class ProjectController extends Controller
     }
 
     // Entry Page - Collab Page
-    public function entrypage()
+    public function entrypage($id)
     {
-        return view('entrypage');
+        $project = Project::with('files', 'devs', 'clients')->find($id);
+
+        return view('entrypage', compact('project'));
     }
 
     // Payment

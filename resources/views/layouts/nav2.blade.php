@@ -23,6 +23,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/landingpage.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/entrypage.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/newsfeed.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -48,7 +50,7 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">PROFILE</a>
                             </li>
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">MY PROJECTS</a>
                             </li>
@@ -110,8 +112,8 @@
 
         				<div class="col-lg-4 col-md-4 col-sm-4">
         					<h4>Reach Us</h4>
-							<div class="item-contact"> 
-								<a href="tel:630-885-9200"><span class="link-id">P</span>:<span>630-885-9200</span></a> <a href="tel:630-839.2006"><span class="link-id">F</span>:<span>630-839.2006</span></a> <a href="mailto:info@rigma.com"><span class="link-id">E</span>:<span>info@rigmatechnology.com</span></a> 
+							<div class="item-contact">
+								<a href="tel:630-885-9200"><span class="link-id">P</span>:<span>630-885-9200</span></a> <a href="tel:630-839.2006"><span class="link-id">F</span>:<span>630-839.2006</span></a> <a href="mailto:info@rigma.com"><span class="link-id">E</span>:<span>info@rigmatechnology.com</span></a>
 							</div>
         				</div>
 
@@ -123,12 +125,12 @@
 							</form>
         				</div>
 
-        				
+
         			</div>
         		</div>
         	</div>
         	<div class="footer-bottom-layout">
-        		<div class="socialMedia-footer"> 
+        		<div class="socialMedia-footer">
         			<div class="col-md-12">
 	                    <ul class="social-network social-circle">
 	                        <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
@@ -136,12 +138,17 @@
 	                        <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
 	                        <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
 	                        <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-	                    </ul>				
+	                    </ul>
 					</div>
         		</div>
         		<div class="copyright-tag">Copyright © 201 Bugslayers. All Rights Reserved.</div>
         	</div>
         </footer>
     </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="https://use.fontawesome.com/45e03a14ce.js"></script>
 </body>
 </html>
