@@ -44,10 +44,16 @@ class User extends Authenticatable
     }
 
     public function ratings() {
-        return $this->belongsToMany('App\Rating', 'ratings_users', 'user_id', 'rating_id')->withPivot('value');
+        return $this->belongsToMany('App\Rating', 'ratings_users', 'rated_to', 'rating_id')->withPivot('value');
     }
 
-    public function feedbacks() {
-        return $this->hasMany('App\Feedback');
+    public function feedbacksAsDev() {
+        return $this->hasMany('App\Feedback', 'feedbacks', 'dev_id', 'feedback');
     }
+
+    public function feedbacksAsClient() {
+        return $this->hasMany('App\Feedback', 'feedbacks', 'client_id', 'feedback');
+    }
+
+
 }

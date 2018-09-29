@@ -13,27 +13,7 @@
     <div class="container">     
         <div class="row">
             <div class="col-sm-3">
-                <div class="rating-block">
-                    @foreach($ratings as $rating)
-                    <h4>{{$rating->name}}</h4>
-                    <button type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 1)">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 2)">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button id="{{$rating->name}}-3" type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 3)">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 4)">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 5)">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <input name="{{$rating->id}}" id="{{$rating->id}}" type="text" val="">
-                    @endforeach
-                </div>
+                
             </div>                    
         </div>      
     </div> <!-- /container -->
@@ -51,36 +31,45 @@
                    
                         <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="panel-body">
-                             <form role="form" class="col-md-4">
-                <div class="form-group">
-                    <label class="form-label">Select User Type</label>
-                    <div class="controls">
-                        <select id="enquiry" class="form-control" name="enquiry" class="input-xlarge">
-                            <option value="" selected="selected">(please select)</option>
-                            <option value="">Developer</option>
-                            <option value="">Business Owner</option>
-                        </select>
+                                <h3>What can you say about {{$client->first_name}} {{$client->last_name}}?</h3>
+                            <form role="form" class="col-md-4" method="POST" action={{url("/feedback/create/$project->id/$client->id")}}>
+                                @csrf
+                                <div class="rating-block">
+                                    @foreach($ratings as $rating)
+                                    <h4>{{$rating->name}}</h4>
+                                    <button type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 1)">
+                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 2)">
+                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button id="{{$rating->name}}-3" type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 3)">
+                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 4)">
+                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 5)">
+                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <input name="{{$rating->id}}" id="{{$rating->id}}" type="text" val="" hidden>
+                                    @endforeach
+                                </div>
+                                <div class="form-group">
+                                    <label for="feedback">Leave a Review</label>
+                                    <textarea name="feedback" type="text" class="form-control" id="text" placeholder="Enter comment"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+                        </div>
+                        </div>
                     </div>
                 </div>
-                
- <div class="form-group">
-    <label for="nameoftheorganisation">Project Name</label>
-    <input type="name" class="form-control" id="nameoftheorganisation" placeholder="Organisation Name">
-  </div>
-   <div class="form-group">
-    <label for="name">Name</label>
-    <input type="name" class="form-control" id="name" placeholder="Enter Your Name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Leave a Review</label>
-    <textarea type="text" class="form-control" id="text" placeholder="Write your query here"></textarea>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <!-- import jquery -->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
