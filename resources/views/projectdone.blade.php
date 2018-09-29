@@ -29,7 +29,7 @@
     	                    <button>html</button><button>html</button><button>css</button><button>php</button>
 
     	                    <h6>Ratings:</h6>
-    	                    <textarea></textarea>
+    	                    <textarea class="form-control" placeholder="type a message"></textarea>
                     	</div>
 
                         
