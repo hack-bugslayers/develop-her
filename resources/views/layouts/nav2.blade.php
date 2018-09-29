@@ -20,7 +20,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/feedback.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/homepage.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/landingpage.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
 </head>
 <body>
