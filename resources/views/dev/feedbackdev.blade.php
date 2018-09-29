@@ -37,19 +37,19 @@
                                 <div class="rating-block">
                                     @foreach($ratings as $rating)
                                     <h4>{{$rating->name}}</h4>
-                                    <button type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 1)">
+                                    <button id="{{$rating->name}}1" type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 1, '{{$rating->name}}')">
                                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                     </button>
-                                    <button type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 2)">
+                                    <button id="{{$rating->name}}2" type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 2, '{{$rating->name}}')">
                                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                     </button>
-                                    <button id="{{$rating->name}}-3" type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 3)">
+                                    <button id="{{$rating->name}}3" type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 3, '{{$rating->name}}')">
                                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                     </button>
-                                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 4)">
+                                    <button id="{{$rating->name}}4" type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 4, '{{$rating->name}}')">
                                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                     </button>
-                                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 5)">
+                                    <button id="{{$rating->name}}5" type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 5, '{{$rating->name}}')">
                                       <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
                                     </button>
                                     <input name="{{$rating->name}}" id="{{$rating->id}}" type="text" val="" hidden>
@@ -89,11 +89,21 @@
     //     });
     // });
 
-    function setRating(id, val) {
-        // var value = val;
+    function setRating(id, val, name) {
+        var name = name;
         var id = id;
-        console.log(val);
-        console.log(id);
+        console.log(name);
+        // console.log(id);
+        var temp = val;
+
+        for (var x = val; x > 0; x--) {
+            $("#"+name+x).removeClass( "btn-default" ).addClass( "btn-warning" );
+        }
+
+        for (var y = temp; y < 5; y++) {
+            y += 1;
+            $("#"+name+y).removeClass( "btn-warning" ).addClass( "btn-default" );
+        }
 
         $("#"+id).val(val);
 
