@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Skill extends Model
 {
     public function users() {
-        return $this->belongsToMany('App\User', 'users_skills', 'skill_id', 'user_id')->withTimestamps();
+        return $this->belongsToMany('App\User', 'skills_users', 'skill_id', 'user_id')->withTimestamps();
     }
 
     public function projects() {

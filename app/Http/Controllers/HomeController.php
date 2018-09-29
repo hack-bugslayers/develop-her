@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\Project;
-use App\ProjectsUsers;
+use App\ProjectsUser;
 use App\User;
 use App\Role;
 use App\Skill;
@@ -28,19 +28,19 @@ class HomeController extends Controller
             // Dashboard - Project Count
             $user_id = Auth::user()->id;
 
-            $ongoings = ProjectsUsers::where('dev_id', $user_id)
+            $ongoings = ProjectsUser::where('dev_id', $user_id)
                 ->where('status_id', 1)
                 ->get();
 
             $ongoing = count($ongoings);
 
-            $runnerups = ProjectsUsers::where('dev_id', $user_id)
+            $runnerups = ProjectsUser::where('dev_id', $user_id)
                 ->where('status_id', 2)
                 ->get();
 
             $runnerup = count($runnerups);
 
-            $winners = ProjectsUsers::where('dev_id', $user_id)
+            $winners = ProjectsUser::where('dev_id', $user_id)
                 ->where('status_id', 3)
                 ->get();
 
@@ -62,19 +62,19 @@ class HomeController extends Controller
             // Dashboard - Project Count
             $user_id = Auth::user()->id;
 
-            $ongoings = ProjectsUsers::where('dev_id', $user_id)
+            $ongoings = ProjectsUser::where('dev_id', $user_id)
                 ->where('status_id', 1)
                 ->get();
 
             $ongoing = count($ongoings);
 
-            $runnerups = ProjectsUsers::where('dev_id', $user_id)
+            $runnerups = ProjectsUser::where('dev_id', $user_id)
                 ->where('status_id', 2)
                 ->get();
 
             $runnerup = count($runnerups);
 
-            $winners = ProjectsUsers::where('dev_id', $user_id)
+            $winners = ProjectsUser::where('dev_id', $user_id)
                 ->where('status_id', 3)
                 ->get();
 
@@ -95,7 +95,7 @@ class HomeController extends Controller
         }
     }
 
-    // Profile (Dev)
+    // Profile
     public function profile()
     {
         $user = Auth::user();
@@ -114,9 +114,9 @@ class HomeController extends Controller
     }
 
     // Codepen
-    public function resourcesdev()
+    public function code()
     {
-        return view('dev.resourcesdev');
+        return view('dev.codeeditor');
     }
 
     // feedbackpage

@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\CommentsUpdate' => $baseDir . '/app/CommentsUpdate.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\EntriesFile' => $baseDir . '/app/EntriesFile.php',
     'App\\Entry' => $baseDir . '/app/Entry.php',
@@ -13,6 +14,7 @@ return array(
     'App\\Feedback' => $baseDir . '/app/Feedback.php',
     'App\\File' => $baseDir . '/app/File.php',
     'App\\FilesProjects' => $baseDir . '/app/FilesProject.php',
+    'App\\FilesUpdate' => $baseDir . '/app/FilesUpdate.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
     'App\\Http\\Controllers\\Auth\\RegisterController' => $baseDir . '/app/Http/Controllers/Auth/RegisterController.php',
@@ -23,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\MessageController' => $baseDir . '/app/Http/Controllers/MessageController.php',
     'App\\Http\\Controllers\\ProjectController' => $baseDir . '/app/Http/Controllers/ProjectController.php',
     'App\\Http\\Controllers\\PublicPagesController' => $baseDir . '/app/Http/Controllers/PublicPagesController.php',
+    'App\\Http\\Controllers\\UpdateController' => $baseDir . '/app/Http/Controllers/UpdateController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckForMaintenanceMode' => $baseDir . '/app/Http/Middleware/CheckForMaintenanceMode.php',
@@ -31,7 +34,9 @@ return array(
     'App\\Http\\Middleware\\TrimStrings' => $baseDir . '/app/Http/Middleware/TrimStrings.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+    'App\\LikesUpdate' => $baseDir . '/app/LikesUpdate.php',
     'App\\Message' => $baseDir . '/app/Message.php',
+    'App\\Notifications\\VerifyEmail' => $baseDir . '/app/Notifications/VerifyEmail.php',
     'App\\Project' => $baseDir . '/app/Project.php',
     'App\\ProjectsSkill' => $baseDir . '/app/ProjectsSkill.php',
     'App\\ProjectsUser' => $baseDir . '/app/ProjectsUser.php',
@@ -47,6 +52,7 @@ return array(
     'App\\SkillsUser' => $baseDir . '/app/SkillsUser.php',
     'App\\Status' => $baseDir . '/app/Status.php',
     'App\\Type' => $baseDir . '/app/Type.php',
+    'App\\Update' => $baseDir . '/app/Update.php',
     'App\\User' => $baseDir . '/app/User.php',
     'BeyondCode\\DumpServer\\DumpServerCommand' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerCommand.php',
     'BeyondCode\\DumpServer\\DumpServerServiceProvider' => $vendorDir . '/beyondcode/laravel-dump-server/src/DumpServerServiceProvider.php',
