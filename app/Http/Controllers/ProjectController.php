@@ -302,9 +302,11 @@ class ProjectController extends Controller
     }
 
     // Entry Page - Collab Page
-    public function entrypage()
+    public function entrypage($id)
     {
-        return view('entrypage');
+        $project = Project::with('files', 'devs', 'clients')->find($id);
+
+        return view('entrypage', compact('project'));
     }
 
     // Payment
