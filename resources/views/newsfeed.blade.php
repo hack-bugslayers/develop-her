@@ -89,7 +89,7 @@
 
             $('.comment-update').click(function() {
                 var update_id = $(this).val();
-                alert(update_id);
+                // alert(update_id);
             });
         });
 

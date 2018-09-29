@@ -42,10 +42,9 @@ Route::get('/feed', 'ProjectController@feed');
 
 // ACCOUNT
 // Account (Dev) - Chellie/Ann
-Route::get('/accountdev', 'ProjectController@accountDev');
+Route::get('/account', 'ProjectController@accountView');
 Route::post('/accountdev/update', 'ProjectController@updateDevAccount');
 // Account (Owner) - Chellie/Ann
-Route::get('/accountowner', 'ProjectController@accountOwner');
 Route::post('/accountowner/update', 'ProjectController@updateOwnerAccount');
 // Payment - Mars
 Route::get('/payment', 'ProjectController@payment');
