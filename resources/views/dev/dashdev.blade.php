@@ -116,7 +116,25 @@
                         <td>{{$status->name}}</td>
                       @endif
                     @endforeach
-                    <td><a href="/feedback/{{$myproject->id}}">Add</a></td>
+                    <td>
+
+                      @foreach($feedbacks as $feedback)
+                        @if ($feedback->rated_by == $user->id)
+                          @if ($feedback->project_id == $myproject->id)
+                            <p>Submitted</p>
+                          @endif
+                        @else
+                          <a href="/feedback/{{$myproject->id}}">Add</a>
+                        @endif
+                        {{-- @if ($feedback->project_id == $myproject->id)
+                          @if ($feedback->rated_by == $user->id)
+                            <p>Submitted</p>
+                          @else
+                            <a href="/feedback/{{$myproject->id}}">Add</a>
+                          @endif
+                        @endif --}}
+                      @endforeach
+                    </td>
                   </tr>
                 @endforeach
                 <!-- <tr>
