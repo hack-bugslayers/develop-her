@@ -12,6 +12,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/second-section-accordion.js') }}" defer></script>
+    <script src="{{ asset('js/fourth-section-accordion.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -19,8 +21,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/homepage.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/landingpage.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/nav.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/second-section-accordion.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/fourth-section-accordion.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
