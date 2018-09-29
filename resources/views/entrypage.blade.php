@@ -32,8 +32,8 @@
                             <textarea></textarea>
 
                         </div>
-                   <div class="chat_container">
-                      <div class="chat_container2">
+                   <div class="row">
+                      <div class="chat_container">
                          <div class="col-sm-3 chat_sidebar">
                          <div class="row">
                          <div class="col-sm-15 message_section">
@@ -41,14 +41,6 @@
                          <div class="new_message_head">
                          <div class="pull-left"><button><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Message</button></div><div class="pull-right"><div class="dropdown">
                   <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fa fa-cogs" aria-hidden="true"></i>  Setting
-                    <span class="caret"></span>
-                  </button>
-                  <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Logout</a></li>
-                  </ul>
                 </div></div>
                          </div><!--new_message_head-->
                          
