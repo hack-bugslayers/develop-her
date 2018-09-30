@@ -32,6 +32,7 @@
     <link href="{{ asset('css/nav.css') }}" rel="stylesheet">
     <link href="{{ asset('css/second-section-accordion.css') }}" rel="stylesheet">
     <link href="{{ asset('css/fourth-section-accordion.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -93,7 +94,7 @@
         		<div class="container">
         			<div class="row">
         				<div class="OurBlog">
-        					<h4>RIGMA BRAND</h4>
+        					<h4>RIGMA</h4>
         					<p>Lorem ipsum keme keme keme 48 years mashumers , cheapangga jongoloids warla na bakit biway kasi boyband na ang na ang jutay majubis paminta krung-krung at.</p>
         					<div class="post-blog-date">September 2018</div>
         				</div>

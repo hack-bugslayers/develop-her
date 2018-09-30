@@ -57,8 +57,8 @@
         </div>
 
         <!-- skills -->
-        <div class="panel-heading" style="background-color:  #48C9B0;">
-            <h3 class="panel-title">Skills</h3></div>
+        <div class="panel-heading" style="background-color:  #16A085;">
+            <h3 class="panel-title" style="color: white" >Skills</h3></div>
         <div class="well">
             
             @if (!empty($myskills))
@@ -79,8 +79,8 @@
         
 <!--projects won-->
 <div class="panel panel-default">
-  <div class="panel-heading"style="background-color:  #48C9B0;">
-    <h3 class="panel-title">Projects Won</h3>
+  <div class="panel-heading"style="background-color:  #16A085;">
+    <h3 class="panel-title" style="color: white">Projects Won</h3>
   </div>
   <div class="panel-body">
     <table class="table table-striped table-hover">
@@ -105,8 +105,8 @@
 </div>
 
 <!-- client feedback -->
-<div class="panel-heading"style="background-color:  #48C9B0;">
-    <h3 class="panel-title">Client Feedback</h3>
+<div class="panel-heading"style="background-color:  #16A085;">
+    <h3 class="panel-title" style="color: white">Client Feedback</h3>
   </div>    
     <div class="review-block">
         <div class="row">
