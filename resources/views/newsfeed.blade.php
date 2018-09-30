@@ -1,11 +1,6 @@
 @extends('layouts.nav2')
 
 @section('content')
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
         crossorigin="anonymous">
 
@@ -28,6 +23,7 @@
                     <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="posts-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="posts" aria-selected="true">Share your thoughts.</a>
+                            <meta name="csrf_token" content="{{ csrf_token() }}">
                         </li>
                     </ul>
                 </div>
@@ -84,11 +80,25 @@
         $(document).ready(function() {
             $('.like-update').click(function() {
                 var update_id = $(this).val();
+                var btnTxt = $(this).text();
+                var token = $('[name="csrf_token"]').attr('content');
+
+                $.get('/update/like',
+                    {
+                        update_id: update_id,
+                        btnTxt: btnTxt,
+                        _token: token
+                    },
+                    function(data, status) {
+
+                    });
+
                 // alert(update_id);
             });
 
             $('.comment-update').click(function() {
                 var update_id = $(this).val();
+                var token = $('[name="csrf_token"]').attr('content');
                 // alert(update_id);
             });
         });
