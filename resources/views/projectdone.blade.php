@@ -6,9 +6,10 @@
             <div class="col-md-8">
                 <div class="card">
                     <!-- css: text-transform -->
-                    <div class="card-header"><h2 style="display: inline-block;"><strong>Aling Bebang Specialty Cakes</strong></h2>
+                    <div class="card-header">
+                        <h2 style="display: inline-block;"><strong>Aling Bebang Specialty Cakes</strong></h2>
                                           
-                                <button value="" id="joinProject" type="button" class="btn btn-success" style="display: inline; float: right; width: 100px;">Approved</button>
+                        <button value="" id="joinProject" type="button" class="btn btn-success" style="display: inline; float: right; width: 100px;">Approved</button>
 
                     <div class="row">
 
