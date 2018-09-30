@@ -173,7 +173,7 @@
 </div>
 
 <!--community projects-->
-<div class="panel panel-default">
+{{-- <div class="panel panel-default">
   <div class="panel-heading"style="background-color:  #48C9B0;">
     <h3 class="panel-title">Community Projects</h3>
   </div>
@@ -198,7 +198,7 @@
       @endforeach
     </table>
   </div>
-</div>
+</div> --}}
 
 @endsection
 

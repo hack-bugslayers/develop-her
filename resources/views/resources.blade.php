@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="container">
+  <h2 style="padding: 2.5%; text-align: center; font-size: 2em;">RESOURCES</h2> 
     <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-5s">
+        <div class="col-lg-5 col-md-5" style="display:inline-block;">
             <div class="card">
-            	{{-- <h2 style="padding: 2.5%">Resources</h2> --}}
+            	<!-- css: text-transform -->
 
-                <div class="card-body" style="float: left, width:50%">        
+
+                <div class="card-body">        
 
                     <table class="table">
                       <thead class="thead-dark text centered">
@@ -51,16 +53,11 @@
                     </table>
 
                 </div>
-      </div>
-    </div>
-  </div>
-
-      <div class="row justify-content-center">
-        <div class="col-lg-5 col-md-5s">
+              </div>
+            </div>
+            <div class="col-lg-5 col-md-5" style="display:inline-block;">
             <div class="card">
-              {{-- <h2 style="padding: 2.5%">Resources</h2> --}}
-                	
-                <div class="card-body" >          
+            <div class="card-body">          
 
                     <table class="table">
                       <thead class="thead-dark text centered">
@@ -104,14 +101,17 @@
                     </table>
 
                 </div>
-            
                     
+                    </div>
+                  </div>
   
 
                 </div>
             </div>
         </div>
     </div>
-    <a href="../code-editor"><button type="button" class="btn btn-dark" style="display: block; background-color: #212529; ali">Practice Coding!</button></a>
+    <div style="text-align: center;">
+        <a href="../code-editor" class="center" ><button type="button" class="btn btn-dark" style="background-color: #212529; padding:20px; font-size: 1.2em">PRACTICE CODING</button></a>
+    </div>
 </div>
 @endsection
