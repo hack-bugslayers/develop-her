@@ -13,95 +13,9 @@
     <div class="container">     
         <div class="row">
             <div class="col-sm-3">
-                <div class="rating-block">
-                    <h4>Average user rating</h4>
-                    <h2 class="bold padding-bottom-7">4.3 <small>/ 5</small></h2>
-                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                    <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
-                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <h4>Rating breakdown</h4>
-                <div class="pull-left">
-                    <div class="pull-left" style="width:35px; line-height:1;">
-                        <div style="height:9px; margin:5px 0;">5 <span class="glyphicon glyphicon-star"></span></div>
-                    </div>
-                    <div class="pull-left" style="width:180px;">
-                        <div class="progress" style="height:9px; margin:8px 0;">
-                          <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: 1000%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="pull-right" style="margin-left:10px;">1</div>
-                </div>
-                <div class="pull-left">
-                    <div class="pull-left" style="width:35px; line-height:1;">
-                        <div style="height:9px; margin:5px 0;">4 <span class="glyphicon glyphicon-star"></span></div>
-                    </div>
-                    <div class="pull-left" style="width:180px;">
-                        <div class="progress" style="height:9px; margin:8px 0;">
-                          <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: 80%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="pull-right" style="margin-left:10px;">1</div>
-                </div>
-                <div class="pull-left">
-                    <div class="pull-left" style="width:35px; line-height:1;">
-                        <div style="height:9px; margin:5px 0;">3 <span class="glyphicon glyphicon-star"></span></div>
-                    </div>
-                    <div class="pull-left" style="width:180px;">
-                        <div class="progress" style="height:9px; margin:8px 0;">
-                          <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width: 60%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="pull-right" style="margin-left:10px;">0</div>
-                </div>
-                <div class="pull-left">
-                    <div class="pull-left" style="width:35px; line-height:1;">
-                        <div style="height:9px; margin:5px 0;">2 <span class="glyphicon glyphicon-star"></span></div>
-                    </div>
-                    <div class="pull-left" style="width:180px;">
-                        <div class="progress" style="height:9px; margin:8px 0;">
-                          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: 40%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="pull-right" style="margin-left:10px;">0</div>
-                </div>
-                <div class="pull-left">
-                    <div class="pull-left" style="width:35px; line-height:1;">
-                        <div style="height:9px; margin:5px 0;">1 <span class="glyphicon glyphicon-star"></span></div>
-                    </div>
-                    <div class="pull-left" style="width:180px;">
-                        <div class="progress" style="height:9px; margin:8px 0;">
-                          <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: 20%">
-                            <span class="sr-only">80% Complete (danger)</span>
-                          </div>
-                        </div>
-                    </div>
-                    <div class="pull-right" style="margin-left:10px;">0</div>
-                </div>
-            </div>          
-        </div>          
+                
+            </div>                    
+        </div>      
     </div> <!-- /container -->
 <br>
 
@@ -117,35 +31,105 @@
                    
                         <div id="collapseOne" class="panel-collapse collapse in">
                         <div class="panel-body">
-                             <form role="form" class="col-md-4">
-                <div class="form-group">
-                    <label class="form-label">Select User Type</label>
-                    <div class="controls">
-                        <select id="enquiry" class="form-control" name="enquiry" class="input-xlarge">
-                            <option value="" selected="selected">(please select)</option>
-                            <option value="">Developer</option>
-                            <option value="">Business Owner</option>
-                        </select>
+                                <h3>What can you say about {{$dev->first_name}} {{$dev->last_name}}?</h3>
+                            <form role="form" class="col-md-4" method="POST" action={{url("/feedback/create/$project->id/$dev->id")}}>
+                                @csrf
+                                <div class="rating-block">
+                                    @foreach($ratings as $rating)
+                                    <h4>{{$rating->name}}</h4>
+                                    <button id="{{$rating->name}}1" type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 1, '{{$rating->name}}')">
+                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button id="{{$rating->name}}2" type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 2, '{{$rating->name}}')">
+                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button id="{{$rating->name}}3" type="button" class="btn btn-default btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 3, '{{$rating->name}}')">
+                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button id="{{$rating->name}}4" type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 4, '{{$rating->name}}')">
+                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <button id="{{$rating->name}}5" type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align" onclick="setRating('{{$rating->id}}', 5, '{{$rating->name}}')">
+                                      <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    </button>
+                                    <input name="{{$rating->name}}" id="{{$rating->id}}" type="text" val="" hidden>
+                                    @endforeach
+                                </div>
+                                <div class="form-group">
+                                    <label for="feedback">Leave a Review</label>
+                                    <textarea name="feedback" type="text" class="form-control" id="text" placeholder="Enter comment"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+                        </div>
+                        </div>
                     </div>
                 </div>
-                
- <div class="form-group">
-    <label for="nameoftheorganisation">Project Name</label>
-    <input type="name" class="form-control" id="nameoftheorganisation" placeholder="Organisation Name">
-  </div>
-   <div class="form-group">
-    <label for="name">Name</label>
-    <input type="name" class="form-control" id="name" placeholder="Enter Your Name">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter your email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Leave a Review</label>
-    <textarea type="text" class="form-control" id="text" placeholder="Write your query here"></textarea>
-  </div>
-  <button type="submit" class="btn btn-default">Submit</button>
-</form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- import jquery -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<!-- import bootstrap js -->
+<script type="text/javascript" src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+    // $(document).ready(function () {
+    //     $("#run").click(function() {
+    //         var html = $('#html').val();
+    //         var css = $('#css').val();
+    //         var js = $('#js').val();
+    //         var tag = $('.tag').val();
+    //         var code = '<style>' + css + '</style>' + html + '<script>' + js + tag;
+    //         $("#browser").html(code);
+    //     });
+    // });
+
+    function setRating(id, val, name) {
+        var name = name;
+        var id = id;
+        console.log(name);
+        // console.log(id);
+        var temp = val;
+
+        for (var x = val; x > 0; x--) {
+            $("#"+name+x).removeClass( "btn-default" ).addClass( "btn-warning" );
+        }
+
+        for (var y = temp; y < 5; y++) {
+            y += 1;
+            $("#"+name+y).removeClass( "btn-warning" ).addClass( "btn-default" );
+        }
+
+        $("#"+id).val(val);
+
+        // var quantity = $('#itemQuantity' + id).val();
+        // var price = $('#itemPrice' + id).val();
+        // if (quantity == 0) {
+        //     $('.add-error').show().delay(2000).fadeOut(1500);
+        // } else {
+        //     $.post('assets/add_to_cart.php',
+        //         {
+        //             item_id: id,
+        //             item_quantity: quantity,
+        //             item_price: price
+        //         },
+        //             function(data, status) {
+        //                 $('.cart-nav-icon').html('<img src="assets/img/icons/icons8-shopping-bag-50.png">' + data);
+        //                 $('.cart-nav-text').html('CART' + data);
+        //                 $('.added').show().delay(500).fadeOut(1500);
+        //         });
+        // }
+    }
+
+    // $("button").click(function() {
+    //     var val = $(this).next().val();
+    //     $("")
+    // });
+</script>
 
 @endsection

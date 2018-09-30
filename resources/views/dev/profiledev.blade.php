@@ -100,35 +100,7 @@
           </tr>
         @endif
       @endforeach
-
-      {{-- @foreach($myprojects as $myproject)
-                  <tr>
-                    <td scope="row"><a href={{ url("/entry/$myproject->id") }}>{{$myproject->name}}</a></td>
-                    @foreach($statuses as $status)
-                      @if($myproject->status_id == $status->id)
-                        <td>{{$status->name}}</td>
-                      @endif
-                    @endforeach
-                    <td> --}}
-
-    {{-- <tr>
-      <td>Aling Bebang's Specialty Cake</td>
-      <td>Brand Site</td>
-    </tr>
-    <tr>
-      <td>Mang Carding's Gym</td>
-      <td>Blog</td>
-    </tr>
-    <tr>
-      <td>Damitan Atbp.</td>
-      <td>E-commerce</td>
-    </tr>
-    <tr>
-      <td>Facegram</td>
-      <td>Social Media</td>
-    </tr> --}}
     </table>
-
   </div>
 </div>
 

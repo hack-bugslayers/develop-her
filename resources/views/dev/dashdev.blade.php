@@ -43,7 +43,7 @@
         <div class="list-group">
 
         <!-- view profile link  -->
-        <a href="profile" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> VIEW MY PROFILE </a>
+        <a href="profile/{{ $user->id }}" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> VIEW MY PROFILE </a>
 
         <!-- practice coding link -->
         <a href="/code-editor" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> PRACTICE CODING </a>
@@ -57,7 +57,7 @@
 
             <h4>Average Rating</h4>
             <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">40%</div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $percentage }}%;">{{ $percentage }}%</div>
             </div>
         </div>
       </div>
