@@ -71,12 +71,11 @@ class HomeController extends Controller
 
             $feedbacks = Feedback::all();
 
-            $ratings = RatingsUser::where('rated_to', $user_id)->get();
-            foreach ($ratings as $rating) {
-                
-            }
+            $ratings = RatingsUser::where('rated_to', $user_id)->get()->pluck('value')->all();
+            $average = array_sum($ratings)/count($ratings);
+            $percentage = round(($average/5)*100);            
 
-            return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks'));
+            return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'percentage'));
         } else if ($user->role->id == $owner) {
             // Dashboard - Project Count
             $user_id = Auth::user()->id;
@@ -116,15 +115,58 @@ class HomeController extends Controller
 
             $feedbacks = Feedback::all();
 
-            return view('owner.dashowner', compact('ongoing', 'runnerup', 'winner', 'developers', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks'));
+            $ratings = RatingsUser::where('rated_to', $user_id)->get()->pluck('value')->all();
+            $average = array_sum($ratings)/count($ratings);
+            $percentage = round(($average/5)*100);
+
+            return view('owner.dashowner', compact('ongoing', 'runnerup', 'winner', 'developers', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'percentage'));
         }
     }
 
     public function fetchUpdates()
     {
-        $updates = Update::with('likes', 'comments', 'user')->get();
+        $updates = Update::with('likes', 'comments', 'user')->orderByDesc('updated_at')->get();
 
         return view('newsfeed', compact('updates'));
+    }
+
+    public function like(Request $request)
+    {
+        $update = Update::with('likes')->find($request->update_id);
+        $user = Auth::user();
+
+        $likes = $update->likes()->pluck('user_id')->all();
+
+        if (in_array($user->id, $likes)) {
+            DB::table('likes_updates')
+                ->where('user_id', $user->id)
+                ->where('update_id', $update->id)
+                ->delete();
+        } else {
+            DB::table('likes_updates')
+                ->insert([
+                    'user_id' => $user->id,
+                    'update_id' => $update->id,
+                    'created_at' => Carbon::now(),
+                    'updated_at' => Carbon::now()
+                ]);
+        }
+
+        $countText = count($update->likes) . ' <i class="fa fa-gittip"></i> ' . ((count($update->likes)) > 1 ? 'Likes' : 'Like');
+
+        return $countText;
+    }
+
+    public function post(Request $request)
+    {
+        $user = Auth::user();
+
+        $update = new Update();
+        $update->user_id = $user->id;
+        $update->description = $request->message;
+        $update->save();
+
+        return redirect()->back();
     }
 
     // Profile
@@ -175,8 +217,12 @@ class HomeController extends Controller
 
             $myskills = SkillsUser::where('user_id', $user->id);
 
+            $ratings = RatingsUser::where('rated_to', $user_id)->get()->pluck('value')->all();
+            $average = array_sum($ratings)/count($ratings);
+            $percentage = round(($average/5)*100);
+
             // dd($myprojects);
-            return view('dev.profiledev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'myskills'));
+            return view('dev.profiledev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'myskills', 'percentage'));
         } else if ($user->role->id == $owner) {
             $user_id = Auth::user()->id;
 
@@ -217,8 +263,12 @@ class HomeController extends Controller
 
             $myskills = SkillsUser::where('user_id', $user->id);
 
+            $ratings = RatingsUser::where('rated_to', $user_id)->get()->pluck('value')->all();
+            $average = array_sum($ratings)/count($ratings);
+            $percentage = round(($average/5)*100);
+
             // dd($myprojects);
-            return view('owner.profileowner', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'myskills'));
+            return view('owner.profileowner', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'myskills', 'percentage'));
         }
     }
 
