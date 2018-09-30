@@ -42,6 +42,9 @@ Route::get('/profile/{id}', 'HomeController@profile');
 // FEED
 Route::get('/feed', 'ProjectController@feed');
 
+// ENTRY
+Route::post('/message/send', 'ProjectController@sendMessage');
+
 // ACCOUNT
 // Account (Dev) - Chellie/Ann
 Route::get('/account', 'ProjectController@accountView');

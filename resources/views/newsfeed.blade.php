@@ -17,7 +17,7 @@
 
 <div class="container-fluid gedf-wrapper">
     <div class="row">
-        <div class="col-md-6 gedf-main">
+        <div class="col-md-6 gedf-main" style="margin: 0 auto;">
             <div class="card gedf-card">
                 <div class="card-header">
                     <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
@@ -68,16 +68,18 @@
                     </button>
                     <div>
                         @foreach($update->comments as $comment)
-                            <p>
-                                {{ $comment->comment  }}
-                            </p>
-                            {{-- <div class="mr-2">
-                                <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
-                            </div>
-                            <div class="ml-2">
-                                <div class="h5 m-0">{{ $update->user->username }}</div>
-                                <div class="h7 text-muted">{{ $update->updated_at }}</div>
-                            </div> --}}
+                            @foreach($commenters as $commenter)
+                            @if ($comment->user_id == $commenter->id)
+                                <div class="ml-5" style="margin-top: 5px;">
+                                    <div class="h5 m-0" style="display: inline;">{{ $commenter->username }}</div>
+                                    <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="profile" >
+                                    <div class="h7 text-muted">{{ $comment->updated_at }}</div>
+                                    <p>
+                                        {{ $comment->comment  }}
+                                    </p>
+                                </div>
+                            @endif
+                            @endforeach
                         @endforeach
                     </div>
                 </div>

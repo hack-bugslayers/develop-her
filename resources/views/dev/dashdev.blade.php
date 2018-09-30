@@ -57,7 +57,7 @@
 
             <h4>Average Rating</h4>
             <div class="progress">
-                @if($percentage)
+              @if($percentage)
                 <div class="progress-bar" role="progressbar" aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $percentage }}%;">{{ $percentage }}%</div>
               @else
                 <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">0%</div>
