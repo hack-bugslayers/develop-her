@@ -121,46 +121,24 @@
 
 		<div class="row container"  style="width: 100%">			
 			<div class="col-lg-3 col-md-3">
-				
-					<a href=>
-						<img src="../../img/hands.svg">
-					</a>
-					<p>Collaborate and team up with other developers
-					</p>
-					
-				
+				<a href=><img src="../../img/hands.svg"></a>
+				<p>Collaborate and team up with other developers</p>
 			</div>
 
 			<div class="col-lg-3 col-md-3">
-
-				<a href=>
-						<img src="../../img/customer-review.svg">
-				</a>
-				<p>Get exposure to real client feedback when you work on real world problems</p>
-					
-				
+				<a href=><img src="../../img/customer-review.svg"></a>
+				<p>Get exposure to real client feedback when you work on real world problem
+				</p>
 			</div>
 
 			<div class="col-lg-3 col-md-3">
-
-				<a href=>
-						<img src="../../img/friendship.svg">
-				</a>
+				<a href=><img src="../../img/friendship.svg"></a>
 				<p>Find your support network and be inspired by the progress of other female developers</p>
-					
-				
-
 			</div>
 
 			<div class="col-lg-3 col-md-3">
-
-				<a href=>
-						<img src="../../img/job-search.svg">
-				</a>
+				<a href=><img src="../../img/job-search.svg"></a>
 				<p>Break assumptions about the market</p>
-					
-				
-
 			</div>
 		</div>
 
@@ -169,43 +147,35 @@
 
 <div class="fourth-section">
 	<div class="title m-b-md container text-center">
-				<h2>HOW TO USE</h2>
+		<h2>HOW TO USE</h2>
 	</div>
 
-<div class="how-to-use">
-	<div class="icon">
-		<img src="../../img/web.svg">
-		<p>Create an account</p>
+	<div class="row how-to-use">
+		<div class="col-lg-2 col-md-2 icon">
+			<img src="../../img/web.svg">
+			<p>Create an account</p>
+		</div>
+
+		<div class="col-lg-2 col-md-2 icon">
+			<img src="../../img/looking-for-love.svg">
+			<p>Look for projects you'd like to work on and look for teammates if you'd like</p>
+		</div>
+
+		<div class="col-lg-2 col-md-2 icon">
+			<img src="../../img/speech-bubble.svg">
+			<p>Chat with the project owner</p>
+		</div>
+
+		<div class="col-lg-2 col-md-2 icon">
+			<img src="../../img/upload.svg">
+			<p>Submit and add your project to your portfolio</p>
+		</div>
+
+		<div class=col-lg-2 col-md-2 icon">
+			<img src="../../img/rating.svg">
+			<p>Get rated</p>
+		</div>
 	</div>
-
-	<div class="icon">
-		<img src="../../img/looking-for-love.svg">
-		<p>Look for projects you'd like to work on and look for teammates if you'd like</p>
-	</div>
-
-	<div class="icon">
-		<img src="../../img/speech-bubble.svg">
-		<p>Chat with the project owner</p>
-	</div>
-
-	<div class="icon">
-		<img src="../../img/upload.svg">
-		<p>Submit and add your project to your portfolio</p>
-	</div>
-
-	<div class="icon">
-		<img src="../../img/rating.svg">
-		<p>Get rated</p>
-	</div>
-
-
-	
-</div>
-	    
-    
-    
-    
-</div><!-- container -->
 </div>
 	
 <!-- <div class="fifth-section carousel-wrapper full-height">
