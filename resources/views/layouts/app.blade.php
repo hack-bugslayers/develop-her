@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ Auth::check() ? url('/home') : url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -75,6 +75,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <!-- Element Showed -->
+        <a id="menu" class="waves-effect waves-light btn btn-floating"></a>
     </div>
 </body>
 </html>
