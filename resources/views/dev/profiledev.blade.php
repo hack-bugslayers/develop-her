@@ -61,9 +61,13 @@
             <h3 class="panel-title">Skills</h3></div>
         <div class="well">
             
-            <h4>Javascript</h4>
-            <h4>jQuery</h4>
-            <h4>PHP</h4>
+            @if (!empty($myskills))
+              <h4>No skills selected.</h4>
+            @else
+              @foreach ($myskills as $myskill)
+                <h4>{{$myskill->name}}</h4>
+              @endforeach
+            @endif
 
         </div>
 
@@ -84,8 +88,30 @@
         <th>Name</th>
         <th>Project Type</th>
       </tr>
+      @foreach ($myprojects as $myproject)
+        @if ($myproject->status_id == 3)
+          <tr>
+            <td><a href="/project/{{ $myproject->id }}">{{ $myproject->name }}</a></td>
+            @foreach($types as $type)
+              @if($type->id == $myproject->type_id)
+                <td>{{$type->name}}</td>
+              @endif
+            @endforeach
+          </tr>
+        @endif
+      @endforeach
 
-    <tr>
+      {{-- @foreach($myprojects as $myproject)
+                  <tr>
+                    <td scope="row"><a href={{ url("/entry/$myproject->id") }}>{{$myproject->name}}</a></td>
+                    @foreach($statuses as $status)
+                      @if($myproject->status_id == $status->id)
+                        <td>{{$status->name}}</td>
+                      @endif
+                    @endforeach
+                    <td> --}}
+
+    {{-- <tr>
       <td>Aling Bebang's Specialty Cake</td>
       <td>Brand Site</td>
     </tr>
@@ -100,7 +126,7 @@
     <tr>
       <td>Facegram</td>
       <td>Social Media</td>
-    </tr>
+    </tr> --}}
     </table>
 
   </div>
