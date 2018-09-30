@@ -123,23 +123,23 @@
 		<div class="row container"  style="width: 100%">			
 			<div class="col-lg-3 col-md-3">
 				<a href=><img src="../../img/hands.svg" width="80%"></a>
-				<p>Collaborate and team up with other developers</p>
+				<p>Find fellow beginner developers, collaborate and get updated with your network's progress.</p>
 			</div>
 
 			<div class="col-lg-3 col-md-3">
 				<a href=><img src="../../img/customer-review.svg" width="80%"></a>
-				<p>Get exposure to real client feedback when you work on real world problem
+				<p>Work with small business owners who are looking to launch their brand in the digital space.
 				</p>
 			</div>
 
 			<div class="col-lg-3 col-md-3">
 				<a href=><img src="../../img/friendship.svg" width="80%"></a>
-				<p>Find your support network and be inspired by the progress of other female developers</p>
+				<p>Chat a sister out, reach out for help when in need and pay it forward!</p>
 			</div>
 
 			<div class="col-lg-3 col-md-3">
 				<a href=><img src="../../img/job-search.svg" width="80%"></a>
-				<p>Break assumptions about the market</p>
+				<p>Get a glimpse of the job market and see how your skill level compares to the demands of a real project</p>
 			</div>
 		</div>
 
@@ -159,22 +159,22 @@
 
 		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/looking-for-love.svg">
-			<p class="how-label">Look for projects you'd like to work on and look for teammates if you'd like</p>
+			<p class="how-label">Look for projects you'd like to work on and look forfriends and coders you'd like to work with</p>
 		</div>
 
 		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/speech-bubble.svg">
-			<p class="how-label">Chat with the project owner</p>
+			<p class="how-label">Get in touch with the client to discuss the vision of their website, requirements and timeline</p>
 		</div>
 
 		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/upload.svg">
-			<p class="how-label">Submit and add your project to your portfolio</p>
+			<p class="how-label">Send your output to your client and add it to your portfolio and experience</p>
 		</div>
 
 		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/rating.svg">
-			<p class="how-label">Get rated</p>
+			<p class="how-label">Get real feedback and testimonial from your client and have the option to add it to your portfolio</p>
 		</div>
 	</div>
 </div>
