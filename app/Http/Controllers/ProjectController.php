@@ -12,6 +12,7 @@ use App\Skill;
 use App\Type;
 use App\File;
 use App\Status;
+use App\Message;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Http\Request;
@@ -320,9 +321,24 @@ class ProjectController extends Controller
         return view('entrypage', compact('project'));
     }
 
-    // Payment
-    public function payment()
+    // Send Message
+    public function sendMessage(Request $request)
     {
-        return view('payment');
+        $user = Auth::user();
+        $project_id = $request->project_id;
+        $content = $request->message;
+
+        $project = Project::with('devs')->find($project_id);
+
+        $message = new Message();
+        $message->message = $content;
+        $message->sender_id = $user->id;
+        $message->recipient_id = $project->devs->id;
+        $message->project_id = $project_id;
+        $message->save();
+
+        // ALL MESSAGES
+
+        return $messages;
     }
 }
