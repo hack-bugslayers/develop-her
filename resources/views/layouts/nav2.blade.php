@@ -48,8 +48,8 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- developer's navbar -->
-                        @guest
-                            <li class="nav-item">
+                        {{-- @guest --}}
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">PROFILE</a>
                             </li>
 
@@ -63,6 +63,21 @@
 
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">RESOURCES</a>
+                            </li> --}}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/newsfeed">COMMUNITY</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/feed">FIND A PROJECT</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="/resources">RESOURCES</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('register') }}">LOGOUT</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
@@ -82,7 +97,7 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        {{-- @endguest --}}
                     </ul>
                 </div>
             </div>
