@@ -13,13 +13,14 @@
 			</ol>
 			<div class="carousel-inner">
 				<div class="carousel-item active">
+					<img class="d-block w-100" src="../../img/java.jpeg" width=>
 					<div class="new_html_code d-block w-100"></div>
 					<div class="carousel-caption d-none d-md-block ">
 						<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-6 text-right first-text">
-		    				<h2 class="first-title"><span style="font-size: 60;">Make Way for More Women in Tech</span></h2>
-		   					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-								<button class="btn btn-read">READ MORE</button>
+		    				<h2 class="first-title"><span style="font-size: 60;">You didn't get this far to only get this far.</span></h2>
+		   					<p class="text-right first-title"> Build your portfolio and confidence by working on real world problems.</p>
+								<button class="btn btn-read" style="">READ MORE</button>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 first-image-wrap">
 		    				<!-- <img class="d-block first-image" src="https://meiert.com/de/publications/books/978-1491942574/978-1491942574-s.png" width="300" alt="First slide"> -->
@@ -33,8 +34,8 @@
 					<div class="carousel-caption d-none d-md-block ">
    					<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-6 text-right first-text">
-		    				<h2 class="first-title"><span style="font-size: 60;">Forgetting Women in Tech History</span></h2>
-		   					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		    				<h2 class="first-title"><span style="font-size: 60;">Learn to work in teams</span></h2>
+		   					<p class="text-right first-title">Collaborate with fellow beginner coders to complete a project. Find your support network!</p>
 								<button class="btn btn-read">READ MORE</button>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 first-image-wrap">
@@ -44,13 +45,13 @@
   				</div>
 				</div>
 				<div class="carousel-item">
-					<img class="d-block w-100" src="../../img/collab.jpg"> 
+					<img class="d-block w-100" src="../../img/techwoman.jpeg"> 
 					<div class="new_html_code d-block w-100"></div>
 					<div class="carousel-caption d-none d-md-block ">
    					<div class="row">
 							<div class="col-lg-6 col-md-6 col-sm-6 text-right first-text">
-		    				<h2 class="first-title"><span style="font-size: 60;">33 Must Know Facts About Women in Tech</span></h2>
-		   					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+		    				<h2 class="first-title"><span style="font-size: 60;">Gauge your marketability.</span></h2>
+		   					<p class="text-right first-title">Expose yourself to a real market and get feedback from real clients.</p>
 								<button class="btn btn-read">READ MORE</button>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 first-image-wrap">
@@ -121,23 +122,23 @@
 
 		<div class="row container"  style="width: 100%">			
 			<div class="col-lg-3 col-md-3">
-				<a href=><img src="../../img/hands.svg"></a>
+				<a href=><img src="../../img/hands.svg" width="80%"></a>
 				<p>Collaborate and team up with other developers</p>
 			</div>
 
 			<div class="col-lg-3 col-md-3">
-				<a href=><img src="../../img/customer-review.svg"></a>
+				<a href=><img src="../../img/customer-review.svg" width="80%"></a>
 				<p>Get exposure to real client feedback when you work on real world problem
 				</p>
 			</div>
 
 			<div class="col-lg-3 col-md-3">
-				<a href=><img src="../../img/friendship.svg"></a>
+				<a href=><img src="../../img/friendship.svg" width="80%"></a>
 				<p>Find your support network and be inspired by the progress of other female developers</p>
 			</div>
 
 			<div class="col-lg-3 col-md-3">
-				<a href=><img src="../../img/job-search.svg"></a>
+				<a href=><img src="../../img/job-search.svg" width="80%"></a>
 				<p>Break assumptions about the market</p>
 			</div>
 		</div>
@@ -153,27 +154,27 @@
 	<div class="row how-to-use container text-center">
 		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/web.svg">
-			<p>Create an account</p>
+			<p class="how-label">Create an account</p>
 		</div>
 
 		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/looking-for-love.svg">
-			<p>Look for projects you'd like to work on and look for teammates if you'd like</p>
+			<p class="how-label">Look for projects you'd like to work on and look for teammates if you'd like</p>
 		</div>
 
 		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/speech-bubble.svg">
-			<p>Chat with the project owner</p>
+			<p class="how-label">Chat with the project owner</p>
 		</div>
 
 		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/upload.svg">
-			<p>Submit and add your project to your portfolio</p>
+			<p class="how-label">Submit and add your project to your portfolio</p>
 		</div>
 
 		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/rating.svg">
-			<p>Get rated</p>
+			<p class="how-label">Get rated</p>
 		</div>
 	</div>
 </div>
