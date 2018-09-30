@@ -3,7 +3,9 @@ font-family: 'Montserrat', sans-serif;
 color: red;
 }
 
-
+.card-header {
+    background-color: linear-gradient(to right, tomato, darkorange, orange) !important;
+}
 
 
 .first-section {
