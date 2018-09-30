@@ -9,7 +9,9 @@
                 <div class="card-header"><h2 style="display: inline-block;"><strong>{{ $project->name }}</strong></h2>
                     @if (Auth::check())
                         @if ($project->devs->whereIn('id', Auth::user()->id)->isNotEmpty())
-                            <button value="{{ $project->id }}" id="joinProject" type="button" class="btn btn-danger" style="display: inline; float: right; width: 100px;">Disjoin</button>
+                            <a href={{ url("/entry/$project->id") }}><button type="button" class="btn btn-success" style="display: inline; float: right; width: 100px;">Collab</button></a>
+                            <br>
+                            <button value="{{ $project->id }}" id="joinProject" type="button" class="btn btn-danger" style="display: inline; float: right; width: 100px;">Leave</button>
                         @else
                             <button value="{{ $project->id }}" id="joinProject" type="button" class="btn btn-success" style="display: inline; float: right; width: 100px;">Join</button>
                         @endif
@@ -52,6 +54,7 @@
     </div>
 </div>
 
+
 @endsection
 
 @section('individual_javascript')
@@ -85,6 +88,24 @@
             });
         });
     });
+
+    // BACK TO TOP
+    window.on("scroll", function() {scrollFxn()};
+
+    function scrollFxn() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            $('#backToTop').css('display', 'block');
+            $('#menu').css('display', 'block');
+        } else {
+            $('#backToTop').css('display', 'none');
+            $('#menu').css('display', 'none');
+        }
+    }
+
+    function topFxn() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 </script>
 
 @endsection
