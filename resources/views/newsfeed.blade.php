@@ -29,8 +29,11 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                        <label class="sr-only" for="message">post</label>
-                        <textarea class="form-control" id="message" rows="3" placeholder="What are you thinking?"></textarea>
+                        <form action="{{ url('/update/post') }}" method="POST">
+                            @csrf
+                            <textarea class="form-control" name="message" rows="3" placeholder="What are you thinking?"></textarea>
+                            <button class="btn btn-primary" style="float: right; margin: 5px;">Post</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -57,10 +60,10 @@
                     </p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn-primary like-update" value="{{ $update->id }}">{{ count($update->likes) }} <i class="fa fa-gittip"></i>
+                    <button id="{{ 'like'.$update->id }}" class="btn btn-primary like-update" value="{{ $update->id }}">{{ count($update->likes) }} <i class="fa fa-gittip"></i>
                         {{ count($update->likes) > 1 ? 'Likes' : 'Like' }}
                     </button>
-                    <button class="btn btn-info comment-update" value="{{ $update->id }}">{{ count($update->comments) }} <i class="fa fa-comment"></i>
+                    <button id="{{ 'comment'.$update->id }}" class="btn btn-info comment-update" value="{{ $update->id }}">{{ count($update->comments) }} <i class="fa fa-comment"></i>
                         {{ count($update->comments) > 1 ? 'Comments' : 'Comment' }}
                     </button>
                 </div>
@@ -82,24 +85,33 @@
                 var update_id = $(this).val();
                 var btnTxt = $(this).text();
                 var token = $('[name="csrf_token"]').attr('content');
-
-                $.get('/update/like',
+                // alert(token);
+                btnTxtSanitized = btnTxt.replace(/\d+\s+/g, '');
+                // alert(btnTxtsanitized);
+                $.post('/update/like',
                     {
                         update_id: update_id,
-                        btnTxt: btnTxt,
+                        btnTxt: btnTxtSanitized,
                         _token: token
                     },
                     function(data, status) {
-
+                        $('#like'+update_id).html(data);
                     });
-
-                // alert(update_id);
             });
 
             $('.comment-update').click(function() {
                 var update_id = $(this).val();
                 var token = $('[name="csrf_token"]').attr('content');
                 // alert(update_id);
+
+                $.post('/update/comment',
+                    {
+                        update_id: update_id,
+                        _token: token
+                    },
+                    function(data, status) {
+                        //
+                    });
             });
         });
 
