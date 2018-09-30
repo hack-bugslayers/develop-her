@@ -14,6 +14,8 @@ use App\File;
 use App\Status;
 use App\Rating;
 use App\Update;
+use DB;
+use Carbon\Carbon;
 use App\Feedback;
 use App\RatingsUser;
 use App\SkillsUser;
@@ -77,7 +79,7 @@ class HomeController extends Controller
                 $percentage = round(($average/5)*100);
             } else {
                 $percentage = 0;
-            }  
+            }
 
             return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'percentage'));
         } else if ($user->role->id == $owner) {
@@ -133,9 +135,11 @@ class HomeController extends Controller
 
     public function fetchUpdates()
     {
+        $commenters = User::all();
+
         $updates = Update::with('likes', 'comments', 'user')->orderByDesc('updated_at')->get();
 
-        return view('newsfeed', compact('updates'));
+        return view('newsfeed', compact('updates', 'commenters'));
     }
 
     public function like(Request $request)

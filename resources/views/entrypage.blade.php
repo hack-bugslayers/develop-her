@@ -29,9 +29,8 @@
                             <a href={{ url("/profile/$client->id") }}><h6>{{ $client->business_name }}</h6></a>
                             @endforeach
 
-                            <textarea class="form-control" placeholder="type a message"></textarea>
                           </div>
-  
+
 
                         <div class="col-lg-7 col-md-7 col-sm-6">
 
@@ -45,22 +44,9 @@
                                                     <div class="new_message_head">
                                                         <div class="pull-left"><button><i class="fa fa-plus-square-o" aria-hidden="true"></i> New Message</button>
                                                         </div>
-                                                        <div class="pull-right">
-                                                            <div class="dropdown">
-                                                                <button class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                    <i class="fa fa-cogs" aria-hidden="true"></i>  Setting
-                                                                    <span class="caret"></span>
-                                                                </button>
-                                                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                                                                    <li><a href="#">Action</a></li>
-                                                                    <li><a href="#">Profile</a></li>
-                                                                    <li><a href="#">Logout</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
                                                     </div>
 
-                                                    <div class="chat_area">
+                                                    <div id="chatArea" class="chat_area">
                                                         <ul class="list-unstyled">
                                                             <li class="left clearfix">
                                                                 <span class="chat-img1 pull-left">
@@ -114,12 +100,13 @@
                                                         </ul>
                                                     </div><!--chat_area-->
                                                     <div class="message_write">
-                                                        <textarea class="form-control" placeholder="type a message"></textarea>
+                                                        <meta name="csrf_token" content="{{ csrf_token() }}">
+                                                        <textarea id="collabMsg" class="form-control" placeholder="type a message"></textarea>
                                                         <div class="clearfix"></div>
-                                                        <div class="chat_bottom"><a href="#" class="pull-left upload_btn"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
-                                                        Add Files</a>
-                                                        <a href="#" class="pull-right btn btn-success">
-                                                        Send</a></div>
+                                                        {{-- <div class="chat_bottom"><a href="#" class="pull-left upload_btn"><i class="fa fa-cloud-upload" aria-hidden="true"></i>
+                                                        Add Files</a> --}}
+                                                        <button type="button" class="btn btn-primary" id="sendMessage" style="margin-top: 5px; float: right;" value="{{ $project->id }}">Send</button>
+                                                        </form>
                                                     </div>
                                                 </div>
                                             </div> <!--message_section-->
@@ -140,6 +127,31 @@
                 </div>
             </div>
         </div>
+@endsection
 
+@section('individual_javascript')
 
-        @endsection
+<script>
+
+    $(document).ready(function() {
+        $('#sendMessage').click(function() {
+            var message = $('#collabMsg').val();
+            var token = $('[name="csrf_token"]').attr('content');
+            var project_id = $(this).val();
+            // alert(message + token + project_id);
+
+            $.post('/message/send',
+            {
+                message: message,
+                _token: token,
+                project_id: project_id
+            },
+            function(data, status) {
+                $('#chatArea').html(data);
+            });
+        });
+    });
+
+</script>
+
+@endsection
