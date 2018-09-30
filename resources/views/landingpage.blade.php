@@ -150,7 +150,7 @@
 		<h2>HOW TO USE</h2>
 	</div>
 
-	<div class="row how-to-use">
+	<div class="row how-to-use container text-center">
 		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/web.svg">
 			<p>Create an account</p>
@@ -171,7 +171,7 @@
 			<p>Submit and add your project to your portfolio</p>
 		</div>
 
-		<div class=col-lg-2 col-md-2 icon">
+		<div class="col-lg-2 col-md-2 icon">
 			<img src="../../img/rating.svg">
 			<p>Get rated</p>
 		</div>
