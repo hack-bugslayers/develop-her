@@ -88,24 +88,6 @@
             });
         });
     });
-
-    // BACK TO TOP
-    window.on("scroll", function() {scrollFxn()};
-
-    function scrollFxn() {
-        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-            $('#backToTop').css('display', 'block');
-            $('#menu').css('display', 'block');
-        } else {
-            $('#backToTop').css('display', 'none');
-            $('#menu').css('display', 'none');
-        }
-    }
-
-    function topFxn() {
-        document.body.scrollTop = 0;
-        document.documentElement.scrollTop = 0;
-    }
 </script>
 
 @endsection
