@@ -66,6 +66,20 @@
                     <button id="{{ 'comment'.$update->id }}" class="btn btn-info comment-update" value="{{ $update->id }}">{{ count($update->comments) }} <i class="fa fa-comment"></i>
                         {{ count($update->comments) > 1 ? 'Comments' : 'Comment' }}
                     </button>
+                    <div>
+                        @foreach($update->comments as $comment)
+                            <p>
+                                {{ $comment->comment  }}
+                            </p>
+                            {{-- <div class="mr-2">
+                                <img class="rounded-circle" width="45" src="https://picsum.photos/50/50" alt="">
+                            </div>
+                            <div class="ml-2">
+                                <div class="h5 m-0">{{ $update->user->username }}</div>
+                                <div class="h7 text-muted">{{ $update->updated_at }}</div>
+                            </div> --}}
+                        @endforeach
+                    </div>
                 </div>
             </div>
             @endforeach
@@ -104,14 +118,15 @@
                 var token = $('[name="csrf_token"]').attr('content');
                 // alert(update_id);
 
-                $.post('/update/comment',
-                    {
-                        update_id: update_id,
-                        _token: token
-                    },
-                    function(data, status) {
-                        //
-                    });
+                // $.post('/update/comment',
+                //     {
+                //         update_id: update_id,
+                //         _token: token
+                //     },
+                //     function(data, status) {
+                //         //
+                //     });
+
             });
         });
 
