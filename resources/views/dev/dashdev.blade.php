@@ -43,7 +43,7 @@
         <div class="list-group">
 
         <!-- view profile link  -->
-        <a href="profile" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> VIEW MY PROFILE {{$user->username}}</a>
+        <a href="profile" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> VIEW MY PROFILE </a>
 
         <!-- practice coding link -->
         <a href="/code-editor" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> PRACTICE CODING </a>
@@ -128,14 +128,14 @@
                     @endforeach
                     <td>
 
-                      @foreach($feedbacks as $feedback)
+                          <a href="/feedback/{{$myproject->id}}">Add</a>
+                      {{-- @foreach($feedbacks as $feedback)
                         @if ($feedback->rated_by == $user->id)
                           @if ($feedback->project_id == $myproject->id)
                             <p>Submitted</p>
                           @endif
                         @else
-                          <a href="/feedback/{{$myproject->id}}">Add</a>
-                        @endif
+                        @endif --}}
                         {{-- @if ($feedback->project_id == $myproject->id)
                           @if ($feedback->rated_by == $user->id)
                             <p>Submitted</p>
@@ -143,7 +143,7 @@
                             <a href="/feedback/{{$myproject->id}}">Add</a>
                           @endif
                         @endif --}}
-                      @endforeach
+                      {{-- @endforeach --}}
                     </td>
                   </tr>
                 @endforeach

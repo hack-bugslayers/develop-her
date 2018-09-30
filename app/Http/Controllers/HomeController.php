@@ -16,6 +16,7 @@ use App\Rating;
 use App\Update;
 use App\Feedback;
 use App\RatingsUser;
+use App\SkillsUser;
 
 class HomeController extends Controller
 {
@@ -116,15 +117,57 @@ class HomeController extends Controller
     }
 
     // Profile
-    public function profile()
+    public function profile($id)
     {
-        $user = Auth::user();
+        $user = User::find($id);
 
         $dev = Role::where('name', 'developer')->pluck('id')->first();
         $owner = Role::where('name', 'owner')->pluck('id')->first();
 
         if ($user->role->id == $dev) {
-            return view('dev.profiledev', compact('user'));
+            $user_id = Auth::user()->id;
+
+            $ongoings = ProjectsUser::where('dev_id', $user_id)
+                ->where('status_id', 1)
+                ->get();
+
+            $ongoing = count($ongoings);
+
+            $runnerups = ProjectsUser::where('dev_id', $user_id)
+                ->where('status_id', 2)
+                ->get();
+
+            $runnerup = count($runnerups);
+
+            $winners = ProjectsUser::where('dev_id', $user_id)
+                ->where('status_id', 3)
+                ->get();
+
+            $winner = count($winners);
+
+            // Success Rate
+            if ($winner+$runnerup==0) {
+                $success_rate = 0;
+            } else {
+                $success_rate = round((($winner/($winner+$runnerup))*100),2);
+            }
+
+            $status_id = Status::where('name', 'Ongoing')->pluck('id')->first();
+            $projects = Project::where('status_id', $status_id)->get()->sortByDesc('updated_at');
+
+            $types = Type::all();
+
+            $myprojects = User::find($user_id)->projectsDev()->get();
+            $statuses = Status::all();
+
+            $feedbacks = Feedback::all();
+
+            $myskills = SkillsUser::where('user_id', $user->id);
+
+            // dd($myprojects);
+            return view('dev.profiledev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'myskills'));
+
+            // return view('dev.profiledev', compact('user'));
         } else if ($user->role->id == $owner) {
             return view('owner.profileowner', compact('user'));
         }
