@@ -72,8 +72,12 @@ class HomeController extends Controller
             $feedbacks = Feedback::all();
 
             $ratings = RatingsUser::where('rated_to', $user_id)->get()->pluck('value')->all();
-            $average = array_sum($ratings)/count($ratings);
-            $percentage = round(($average/5)*100);            
+            if (array_sum($ratings)>0) {
+                $average = array_sum($ratings)/count($ratings);
+                $percentage = round(($average/5)*100);
+            } else {
+                $percentage = 0;
+            }  
 
             return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'percentage'));
         } else if ($user->role->id == $owner) {
@@ -116,8 +120,12 @@ class HomeController extends Controller
             $feedbacks = Feedback::all();
 
             $ratings = RatingsUser::where('rated_to', $user_id)->get()->pluck('value')->all();
-            $average = array_sum($ratings)/count($ratings);
-            $percentage = round(($average/5)*100);
+            if (array_sum($ratings)>0) {
+                $average = array_sum($ratings)/count($ratings);
+                $percentage = round(($average/5)*100);
+            } else {
+                $percentage = 0;
+            }
 
             return view('owner.dashowner', compact('ongoing', 'runnerup', 'winner', 'developers', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'percentage'));
         }
@@ -218,8 +226,12 @@ class HomeController extends Controller
             $myskills = SkillsUser::where('user_id', $user->id);
 
             $ratings = RatingsUser::where('rated_to', $user_id)->get()->pluck('value')->all();
-            $average = array_sum($ratings)/count($ratings);
-            $percentage = round(($average/5)*100);
+            if (array_sum($ratings)>0) {
+                $average = array_sum($ratings)/count($ratings);
+                $percentage = round(($average/5)*100);
+            } else {
+                $percentage = 0;
+            }
 
             // dd($myprojects);
             return view('dev.profiledev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'myskills', 'percentage'));
@@ -264,8 +276,12 @@ class HomeController extends Controller
             $myskills = SkillsUser::where('user_id', $user->id);
 
             $ratings = RatingsUser::where('rated_to', $user_id)->get()->pluck('value')->all();
-            $average = array_sum($ratings)/count($ratings);
-            $percentage = round(($average/5)*100);
+            if (array_sum($ratings)>0) {
+                $average = array_sum($ratings)/count($ratings);
+                $percentage = round(($average/5)*100);
+            } else {
+                $percentage = 0;
+            }
 
             // dd($myprojects);
             return view('owner.profileowner', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'myskills', 'percentage'));

@@ -3,11 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-6s">
+        <div class="col-lg-5 col-md-5s">
             <div class="card">
-            	<h2 style="padding: 2.5%">Resources</h2>
-            	<!-- css: text-transform -->
-
+            	{{-- <h2 style="padding: 2.5%">Resources</h2> --}}
 
                 <div class="card-body" style="float: left, width:50%">        
 
@@ -53,8 +51,16 @@
                     </table>
 
                 </div>
+      </div>
+    </div>
+  </div>
+
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-5s">
+            <div class="card">
+              {{-- <h2 style="padding: 2.5%">Resources</h2> --}}
                 	
-            <div class="card-body" >          
+                <div class="card-body" >          
 
                     <table class="table">
                       <thead class="thead-dark text centered">
@@ -98,7 +104,7 @@
                     </table>
 
                 </div>
-            <a href="../code-editor"><button type="button" class="btn btn-dark" style="display: block; background-color: #212529; ali">Practice Coding!</button></a>
+            
                     
   
 
@@ -106,5 +112,6 @@
             </div>
         </div>
     </div>
+    <a href="../code-editor"><button type="button" class="btn btn-dark" style="display: block; background-color: #212529; ali">Practice Coding!</button></a>
 </div>
 @endsection
