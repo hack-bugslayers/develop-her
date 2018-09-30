@@ -43,7 +43,7 @@
         <div class="list-group">
 
         <!-- view profile link  -->
-        <a href="profile" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> VIEW MY PROFILE </a>
+        <a href="profile/{{ $user->id }}" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> VIEW MY PROFILE </a>
 
         <!-- practice coding link -->
         <a href="/code-editor" class="list-group-item"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span> PRACTICE CODING </a>

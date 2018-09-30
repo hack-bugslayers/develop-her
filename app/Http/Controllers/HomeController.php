@@ -71,24 +71,29 @@ class HomeController extends Controller
 
             $feedbacks = Feedback::all();
 
+            $ratings = RatingsUser::where('rated_to', $user_id)->get();
+            foreach ($ratings as $rating) {
+                
+            }
+
             return view('dev.dashdev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks'));
         } else if ($user->role->id == $owner) {
             // Dashboard - Project Count
             $user_id = Auth::user()->id;
 
-            $ongoings = ProjectsUser::where('dev_id', $user_id)
+            $ongoings = ProjectsUser::where('client_id', $user_id)
                 ->where('status_id', 1)
                 ->get();
 
             $ongoing = count($ongoings);
 
-            $runnerups = ProjectsUser::where('dev_id', $user_id)
+            $runnerups = ProjectsUser::where('client_id', $user_id)
                 ->where('status_id', 2)
                 ->get();
 
             $runnerup = count($runnerups);
 
-            $winners = ProjectsUser::where('dev_id', $user_id)
+            $winners = ProjectsUser::where('client_id', $user_id)
                 ->where('status_id', 3)
                 ->get();
 
@@ -101,11 +106,17 @@ class HomeController extends Controller
                 $success_rate = round((($winner/($winner+$runnerup))*100),2);
             }
 
-            // Projects and Types
-            $projects = Project::where('status_id', 1)->get()->sortByDesc('updated_at');
+            // $role_id = Role::where('name', 'developers')->pluck('id')->first();
+            // $developers = User::where('role_id', $role_id)->get()->sortByDesc('updated_at');
+
             $types = Type::all();
 
-            return view('owner.dashowner', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user'));
+            $myprojects = User::find($user_id)->projectsDev()->get();
+            $statuses = Status::all();
+
+            $feedbacks = Feedback::all();
+
+            return view('owner.dashowner', compact('ongoing', 'runnerup', 'winner', 'developers', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks'));
         }
     }
 
@@ -166,10 +177,48 @@ class HomeController extends Controller
 
             // dd($myprojects);
             return view('dev.profiledev', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'myskills'));
-
-            // return view('dev.profiledev', compact('user'));
         } else if ($user->role->id == $owner) {
-            return view('owner.profileowner', compact('user'));
+            $user_id = Auth::user()->id;
+
+            $ongoings = ProjectsUser::where('client_id', $user_id)
+                ->where('status_id', 1)
+                ->get();
+
+            $ongoing = count($ongoings);
+
+            $runnerups = ProjectsUser::where('client_id', $user_id)
+                ->where('status_id', 2)
+                ->get();
+
+            $runnerup = count($runnerups);
+
+            $winners = ProjectsUser::where('client_id', $user_id)
+                ->where('status_id', 3)
+                ->get();
+
+            $winner = count($winners);
+
+            // Success Rate
+            if ($winner+$runnerup==0) {
+                $success_rate = 0;
+            } else {
+                $success_rate = round((($winner/($winner+$runnerup))*100),2);
+            }
+
+            $status_id = Status::where('name', 'Ongoing')->pluck('id')->first();
+            $projects = Project::where('status_id', $status_id)->get()->sortByDesc('updated_at');
+
+            $types = Type::all();
+
+            $myprojects = User::find($user_id)->projectsDev()->get();
+            $statuses = Status::all();
+
+            $feedbacks = Feedback::all();
+
+            $myskills = SkillsUser::where('user_id', $user->id);
+
+            // dd($myprojects);
+            return view('owner.profileowner', compact('ongoing', 'runnerup', 'winner', 'projects', 'types', 'success_rate', 'user', 'myprojects', 'statuses', 'feedbacks', 'myskills'));
         }
     }
 
@@ -206,8 +255,15 @@ class HomeController extends Controller
             $ratings = Rating::all();
 
             return view('dev.feedbackdev', compact('ratings', 'project', 'client'));
-        } else if ($user->role->id == $dev) {
-            return view('owner.feedbackowner');
+        } else if ($user->role->id == $owner) {
+            $devs = Project::find($id)->devs()->get();
+            foreach ($devs as $dev) {
+                $dev = $dev;
+            }
+
+            // dd($clients);
+            $ratings = Rating::all();
+            return view('owner.feedbackowner', compact('ratings', 'project', 'dev'));
         }
     }
 
@@ -215,10 +271,6 @@ class HomeController extends Controller
     public function addFeedback(Request $request, $idP, $idC)
     {
         $user = Auth::user();
-
-        $dev = Role::where('name', 'developer')->pluck('id')->first();
-        $owner = Role::where('name', 'owner')->pluck('id')->first();
-        // dd($request->all());
 
         // Save value for accuracy
         $rating_user = new RatingsUser();
@@ -258,57 +310,6 @@ class HomeController extends Controller
         $feedback->save();
 
         return redirect('home');
-
-        exit;
-        // exit;
-
-        if ($user->role->id == $dev) {
-            $clients = Project::find($id)->clients()->get();
-
-            // dd($clients);
-            $ratings = Rating::all();
-
-            return view('dev.feedbackdev', compact('ratings', 'project', 'clients'));
-        } else if ($user->role->id == $owner) {
-            return view('owner.feedbackowner');
-        }
-    }
-
-     function createBoard(Request $request) {
-        // validation
-        $rules = array(
-            'name' => 'required'
-        );
-        $this -> validate($request, $rules);
-
-        return redirect()->back();
-
-        // create new row
-        // $board = new Board();
-
-        // set board name
-        // $board->name = $request->name;
-
-        // save row
-        // $board->save();
-
-        // assign user_id and board_id in pivot table
-        // $board->users()->attach(Auth::user()->id);
-
-
-        // save this activity
-        // $username = Auth::user()->name;
-        // $activity = new Activity();
-        // $activity->name = $username . ' created a new board "' . $board->name . '"';
-        // $activity->task_id = null;
-        // $activity->board_id = $board->id;
-        // $activity->save();
-
-        // success message
-        // Session::flash('create_success', "$board->name created successfully");
-
-        // return to previous page
-        // return redirect()->back();
     }
 }
 

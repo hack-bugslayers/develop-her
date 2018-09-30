@@ -19,15 +19,13 @@
                       </div>
                       <div class="col-md-8 col-xs-12 col-sm-6 col-lg-8" >
                           <div class="container" >
-                            <h2>Des Pineda</h2>
-                            <p>an   <b> Employee</b></p>
-                          
-                           
+                            <h2>{{ $user->first_name }} {{ $user->last_name }}</h2>
+                            <p>{{ $user->business_name }}</p>
                           </div>
                            <hr>
                           <ul class="container details" >
-                            <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>asasasasasas</p></li>
-                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>dfdfdfdfdfdfdfdf</p></li>
+                            <li><p><span class="glyphicon glyphicon-user one" style="width:50px;"></span>{{ $user->username }}</p></li>
+                            <li><p><span class="glyphicon glyphicon-envelope one" style="width:50px;"></span>{{ $user->email }}</p></li>
                           </ul>
                           <hr>
                       </div>
@@ -39,12 +37,6 @@
   <div class="container">
     <div class="row">
       <div class="col-md-4">
-        <div class="list-group">
-        
-        <!-- chat now  -->
-        <a href="users.html" class="list-group-item active main-color-bg"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> CHAT NOW! </a>
-        </div>
-
         <div class="well">
             <h4>Average Rating</h4>
             <div class="progress">
@@ -60,33 +52,28 @@
 <div class="col-md-8">
 <div class="panel panel-default">
   <div class="panel-heading"style="background-color:  #48C9B0;">
-    <h3 class="panel-title">Completed Projects</h3>
+    <h3 class="panel-title">Projects</h3>
   </div>
-  <div class="panel-body">
+  {{-- <div class="panel-body"> --}}
+    
+
+    <div class="panel-body">
     <table class="table table-striped table-hover">
       <tr>
         <th>Name</th>
         <th>Project Type</th>
       </tr>
-
-    <tr>
-      <td>Aling Bebang's Specialty Cake</td>
-      <td>Brand Site</td>
-    </tr>
-    <tr>
-      <td>Mang Carding's Gym</td>
-      <td>Blog</td>
-    </tr>
-    <tr>
-      <td>Damitan Atbp.</td>
-      <td>E-commerce</td>
-    </tr>
-    <tr>
-      <td>Facegram</td>
-      <td>Social Media</td>
-    </tr>
+      @foreach ($myprojects as $myproject)
+          <tr>
+            <td><a href="/project/{{ $myproject->id }}">{{ $myproject->name }}</a></td>
+            @foreach($types as $type)
+              @if($type->id == $myproject->type_id)
+                <td>{{$type->name}}</td>
+              @endif
+            @endforeach
+          </tr>
+      @endforeach
     </table>
-
   </div>
 </div>
 
